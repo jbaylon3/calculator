@@ -87,8 +87,8 @@ namespace CalculatorApp::ViewModel
             const wchar_t* automationResourceKey;
         };
 
-        [Windows::UI::Xaml::Data::Bindable]
-        public ref class NavCategory sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        [Microsoft::UI::Xaml::Data::Bindable]
+        public ref class NavCategory sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         private:
             using ViewModeType = ::CalculatorApp::ViewModel::Common::ViewMode;
@@ -136,8 +136,8 @@ namespace CalculatorApp::ViewModel
             Platform::String ^ m_modeString;
         };
 
-        [Windows::UI::Xaml::Data::Bindable]
-        public ref class NavCategoryGroup sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        [Microsoft::UI::Xaml::Data::Bindable]
+        public ref class NavCategoryGroup sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         internal:
             NavCategoryGroup(const NavCategoryGroupInitializer& groupInitializer);

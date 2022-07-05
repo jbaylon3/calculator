@@ -31,17 +31,17 @@ public enum class GraphViewChangedReason
     Reset
 };  
 
-    [Windows::UI::Xaml::Markup::ContentPropertyAttribute(Name = L"Equations")] public ref class Grapher sealed
-        : public Windows::UI::Xaml::Controls::Control,
-          public Windows::UI::Xaml::Data::INotifyPropertyChanged
+    [Microsoft::UI::Xaml::Markup::ContentPropertyAttribute(Name = L"Equations")] public ref class Grapher sealed
+        : public Microsoft::UI::Xaml::Controls::Control,
+          public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
     {
     public:
         event TracingValueChangedEventHandler ^ TracingValueChangedEvent;
         event PointerValueChangedEventHandler ^ PointerValueChangedEvent;
         event TracingChangedEventHandler ^ TracingChangedEvent;
         event Windows::Foundation::EventHandler<GraphViewChangedReason> ^ GraphViewChangedEvent;
-        event Windows::UI::Xaml::RoutedEventHandler ^ GraphPlottedEvent;
-        virtual event Windows::UI::Xaml::Data::PropertyChangedEventHandler ^ PropertyChanged;
+        event Microsoft::UI::Xaml::RoutedEventHandler ^ GraphPlottedEvent;
+        virtual event Microsoft::UI::Xaml::Data::PropertyChangedEventHandler ^ PropertyChanged;
 
     public:
         Grapher();
@@ -74,7 +74,7 @@ public enum class GraphViewChangedReason
                 {
                     m_renderMain->ActiveTracing = value;
                     UpdateTracingChanged();
-                    PropertyChanged(this, ref new Windows::UI::Xaml::Data::PropertyChangedEventArgs(L"ActiveTracing"));
+                    PropertyChanged(this, ref new Microsoft::UI::Xaml::Data::PropertyChangedEventArgs(L"ActiveTracing"));
                 }
             }
         }
@@ -264,14 +264,14 @@ public enum class GraphViewChangedReason
 #pragma region Control Overrides
         void OnApplyTemplate() override;
 
-        void OnPointerEntered(Windows::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
-        void OnPointerMoved(Windows::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
-        void OnPointerExited(Windows::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
-        void OnPointerWheelChanged(Windows::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
-        void OnPointerPressed(Windows::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
-        void OnPointerReleased(Windows::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
-        void OnPointerCanceled(Windows::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
-        void OnManipulationDelta(Windows::UI::Xaml::Input::ManipulationDeltaRoutedEventArgs ^ e) override;
+        void OnPointerEntered(Microsoft::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
+        void OnPointerMoved(Microsoft::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
+        void OnPointerExited(Microsoft::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
+        void OnPointerWheelChanged(Microsoft::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
+        void OnPointerPressed(Microsoft::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
+        void OnPointerReleased(Microsoft::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
+        void OnPointerCanceled(Microsoft::UI::Xaml::Input::PointerRoutedEventArgs ^ e) override;
+        void OnManipulationDelta(Microsoft::UI::Xaml::Input::ManipulationDeltaRoutedEventArgs ^ e) override;
 #pragma endregion
 
     private:
@@ -310,13 +310,13 @@ public enum class GraphViewChangedReason
     private:
         DX::RenderMain ^ m_renderMain = nullptr;
 
-        static Windows::UI::Xaml::DependencyProperty ^ s_equationTemplateProperty;
+        static Microsoft::UI::Xaml::DependencyProperty ^ s_equationTemplateProperty;
 
-        static Windows::UI::Xaml::DependencyProperty ^ s_equationsSourceProperty;
+        static Microsoft::UI::Xaml::DependencyProperty ^ s_equationsSourceProperty;
         Windows::Foundation::EventRegistrationToken m_tokenDataSourceChanged;
 
-        static Windows::UI::Xaml::DependencyProperty ^ s_equationsProperty;
-        static Windows::UI::Xaml::DependencyProperty ^ s_variablesProperty;
+        static Microsoft::UI::Xaml::DependencyProperty ^ s_equationsProperty;
+        static Microsoft::UI::Xaml::DependencyProperty ^ s_variablesProperty;
         Windows::Foundation::EventRegistrationToken m_tokenEquationsChanged;
         Windows::Foundation::EventRegistrationToken m_tokenEquationStyleChanged;
         Windows::Foundation::EventRegistrationToken m_tokenEquationChanged;
@@ -340,7 +340,7 @@ public enum class GraphViewChangedReason
 
         bool m_KeysPressed[5];
         bool m_Moving;
-        Windows::UI::Xaml::DispatcherTimer ^ m_TracingTrackingTimer;
+        Microsoft::UI::Xaml::DispatcherTimer ^ m_TracingTrackingTimer;
         Windows::UI::Core::CoreCursor ^ m_cachedCursor;
         int m_errorType;
         int m_errorCode;

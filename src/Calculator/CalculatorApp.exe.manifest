@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
+    <assemblyIdentity version="1.0.0.0" name="MyApplication.app"/>
+
+    <file name="CalcViewModel.dll">
+        <activatableClass
+            name="CalculatorApp.ViewModel.ApplicationViewModel"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.GraphingCalculatorViewModel"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.GridDisplayItems"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.EquationViewModel"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.MemoryItemViewModel"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.StandardCalculatorViewModel"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.DateCalculatorViewModel"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.UnitConverterViewModel"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.DateCalculation.DateCalculationEngine"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.TraceLogger"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.LocalizationService"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.AppResourceProvider"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.CopyPasteManager"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.Utilities"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.LocalizationStringUtil"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.CalculatorButtonPressedEventArgs"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.NavCategory"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.DelegateCommand"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.LocalizationSettings"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.Automation.NarratorNotifier"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.Automation.NarratorAnnouncement"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.Automation.CalculatorAnnouncement"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.NetworkManager"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.Common.NavCategoryStates"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.VariableViewModel"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.GraphingSettingsViewModel"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="CalculatorApp.ViewModel.KeyGraphFeaturesItem"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+    </file>
+    <file name="GraphControl.dll">
+        <activatableClass
+            name="GraphControl.Equation"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="GraphControl.GraphControl_XamlTypeInfo.XamlMetaDataProvider"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="GraphControl.Grapher"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="GraphControl.Variable"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+        <activatableClass
+            name="GraphControl.KeyGraphFeaturesInfo"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+    </file>
+    <file name="TraceLogging.dll">
+        <activatableClass
+            name="TraceLogging.TraceLoggingCommon"
+            threadingModel="both"
+            xmlns="urn:schemas-microsoft-com:winrt.v1" />
+    </file>
+</assembly>

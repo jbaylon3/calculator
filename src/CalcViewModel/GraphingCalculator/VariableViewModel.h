@@ -19,7 +19,7 @@ public
         double newValue;
     };
 
-    [Windows::UI::Xaml::Data::Bindable] public ref class VariableViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+    [Microsoft::UI::Xaml::Data::Bindable] public ref class VariableViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
     {
     public:
         VariableViewModel(Platform::String ^ name, GraphControl::Variable ^ variable)

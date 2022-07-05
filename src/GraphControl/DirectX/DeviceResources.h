@@ -18,8 +18,8 @@ namespace GraphControl::DX
     class DeviceResources
     {
     public:
-        DeviceResources(Windows::UI::Xaml::Controls::SwapChainPanel^ panel);
-        void SetSwapChainPanel(Windows::UI::Xaml::Controls::SwapChainPanel^ panel);
+        DeviceResources(Microsoft::UI::Xaml::Controls::SwapChainPanel^ panel);
+        void SetSwapChainPanel(Microsoft::UI::Xaml::Controls::SwapChainPanel^ panel);
         void SetLogicalSize(Windows::Foundation::Size logicalSize);
         void SetCurrentOrientation(Windows::Graphics::Display::DisplayOrientations currentOrientation);
         void SetDpi(float dpi);
@@ -83,7 +83,7 @@ namespace GraphControl::DX
         Microsoft::WRL::ComPtr<IWICImagingFactory2>    m_wicFactory;
 
         // Cached reference to the XAML panel.
-        Windows::UI::Xaml::Controls::SwapChainPanel^    m_swapChainPanel;
+        Microsoft::UI::Xaml::Controls::SwapChainPanel^    m_swapChainPanel;
 
         // Cached device properties.
         D3D_FEATURE_LEVEL                                m_d3dFeatureLevel;

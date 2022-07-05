@@ -14,7 +14,7 @@ namespace CalculatorApp
 {
     namespace ViewModel
     {
-        [Windows::UI::Xaml::Data::Bindable] public ref class Category sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        [Microsoft::UI::Xaml::Data::Bindable] public ref class Category sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
             internal : Category(const UnitConversionManager::Category& category)
                 : m_original(category)
@@ -27,11 +27,11 @@ namespace CalculatorApp
             property Platform::String
                 ^ Name { Platform::String ^ get() { return ref new Platform::String(m_original.name.c_str()); } }
 
-                property Windows::UI::Xaml::Visibility NegateVisibility
+                property Microsoft::UI::Xaml::Visibility NegateVisibility
             {
-                Windows::UI::Xaml::Visibility get()
+                Microsoft::UI::Xaml::Visibility get()
                 {
-                    return m_original.supportsNegative ? Windows::UI::Xaml::Visibility::Visible : Windows::UI::Xaml::Visibility::Collapsed;
+                    return m_original.supportsNegative ? Microsoft::UI::Xaml::Visibility::Visible : Microsoft::UI::Xaml::Visibility::Collapsed;
                 }
             }
 
@@ -49,7 +49,7 @@ namespace CalculatorApp
             const UnitConversionManager::Category m_original;
         };
 
-        [Windows::UI::Xaml::Data::Bindable] public ref class Unit sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        [Microsoft::UI::Xaml::Data::Bindable] public ref class Unit sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
             internal : Unit(const UnitConversionManager::Unit& unit)
                 : m_original(unit)
@@ -96,7 +96,7 @@ namespace CalculatorApp
             const UnitConversionManager::Unit m_original;
         };
 
-        [Windows::UI::Xaml::Data::Bindable] public ref class SupplementaryResult sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        [Microsoft::UI::Xaml::Data::Bindable] public ref class SupplementaryResult sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         internal:
             SupplementaryResult(Platform::String ^ value, Unit ^ unit)
@@ -153,7 +153,7 @@ namespace CalculatorApp
             IActivatable
             ^ AsActivatable(TActivatable activatable) { return ref new Activatable<TActivatable>(activatable); }
 
-                [Windows::UI::Xaml::Data::Bindable] public ref class UnitConverterViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+                [Microsoft::UI::Xaml::Data::Bindable] public ref class UnitConverterViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
             internal : UnitConverterViewModel(const std::shared_ptr<UnitConversionManager::IUnitConverter>& model);
 
@@ -209,20 +209,20 @@ namespace CalculatorApp
                 }
             }
 
-            property Windows::UI::Xaml::Visibility SupplementaryVisibility
+            property Microsoft::UI::Xaml::Visibility SupplementaryVisibility
             {
-                Windows::UI::Xaml::Visibility get()
+                Microsoft::UI::Xaml::Visibility get()
                 {
-                    return SupplementaryResults->Size > 0 ? Windows::UI::Xaml::Visibility::Visible : Windows::UI::Xaml::Visibility::Collapsed;
+                    return SupplementaryResults->Size > 0 ? Microsoft::UI::Xaml::Visibility::Visible : Microsoft::UI::Xaml::Visibility::Collapsed;
                 }
             }
 
-            property Windows::UI::Xaml::Visibility CurrencySymbolVisibility
+            property Microsoft::UI::Xaml::Visibility CurrencySymbolVisibility
             {
-                Windows::UI::Xaml::Visibility get()
+                Microsoft::UI::Xaml::Visibility get()
                 {
-                    return (CurrencySymbol1->IsEmpty() || CurrencySymbol2->IsEmpty()) ? Windows::UI::Xaml::Visibility::Collapsed
-                                                                                      : Windows::UI::Xaml::Visibility::Visible;
+                    return (CurrencySymbol1->IsEmpty() || CurrencySymbol2->IsEmpty()) ? Microsoft::UI::Xaml::Visibility::Collapsed
+                                                                                      : Microsoft::UI::Xaml::Visibility::Visible;
                 }
             }
 

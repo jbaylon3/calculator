@@ -5,14 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using Windows.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml.Automation.Peers;
 using Windows.Foundation.Collections;
 
 namespace CalculatorApp
 {
     namespace Controls
     {
-        public sealed class OverflowTextBlockAutomationPeer : Windows.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer
+        public sealed class OverflowTextBlockAutomationPeer : Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer
         {
             public OverflowTextBlockAutomationPeer(OverflowTextBlock owner) : base(owner)
             {

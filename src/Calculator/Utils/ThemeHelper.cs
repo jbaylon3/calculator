@@ -6,8 +6,8 @@ using System.Reflection;
 using Windows.Storage;
 using Windows.UI;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 namespace CalculatorApp.Utils
 {
@@ -25,7 +25,7 @@ namespace CalculatorApp.Utils
         {
             get
             {
-                if (Window.Current.Content is FrameworkElement rootElement)
+                if (App.Window.Content is FrameworkElement rootElement)
                 {
                     return rootElement.RequestedTheme;
                 }
@@ -34,7 +34,7 @@ namespace CalculatorApp.Utils
             }
             set
             {
-                if (Window.Current.Content is FrameworkElement rootElement)
+                if (App.Window.Content is FrameworkElement rootElement)
                 {
                     rootElement.RequestedTheme = value;
 
@@ -70,7 +70,7 @@ namespace CalculatorApp.Utils
 
         public static ThemeChangedCallbackToken RegisterAppThemeChangedCallback(DependencyPropertyChangedCallback callback)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
+            Frame rootFrame = App.Window.Content as Frame;
             long token = rootFrame.RegisterPropertyChangedCallback(Frame.RequestedThemeProperty, callback);
             return new ThemeChangedCallbackToken{ RootFrame = new WeakReference(rootFrame), Token = token };
         }

@@ -15,14 +15,14 @@ public
             property Platform::String
             ^ ActivityId { Platform::String ^ get(); }
 
-            property Windows::UI::Xaml::Automation::Peers::AutomationNotificationKind Kind
+            property Microsoft::UI::Xaml::Automation::Peers::AutomationNotificationKind Kind
         {
-            Windows::UI::Xaml::Automation::Peers::AutomationNotificationKind get();
+            Microsoft::UI::Xaml::Automation::Peers::AutomationNotificationKind get();
         }
 
-        property Windows::UI::Xaml::Automation::Peers::AutomationNotificationProcessing Processing
+        property Microsoft::UI::Xaml::Automation::Peers::AutomationNotificationProcessing Processing
         {
-            Windows::UI::Xaml::Automation::Peers::AutomationNotificationProcessing get();
+            Microsoft::UI::Xaml::Automation::Peers::AutomationNotificationProcessing get();
         }
 
         static bool IsValid(NarratorAnnouncement ^ announcement);
@@ -30,15 +30,15 @@ public
     private:
         Platform::String ^ m_announcement;
         Platform::String ^ m_activityId;
-        Windows::UI::Xaml::Automation::Peers::AutomationNotificationKind m_kind;
-        Windows::UI::Xaml::Automation::Peers::AutomationNotificationProcessing m_processing;
+        Microsoft::UI::Xaml::Automation::Peers::AutomationNotificationKind m_kind;
+        Microsoft::UI::Xaml::Automation::Peers::AutomationNotificationProcessing m_processing;
 
     internal:
         NarratorAnnouncement(
             Platform::String ^ announcement,
             Platform::String ^ activityId,
-            Windows::UI::Xaml::Automation::Peers::AutomationNotificationKind kind,
-            Windows::UI::Xaml::Automation::Peers::AutomationNotificationProcessing processing);
+            Microsoft::UI::Xaml::Automation::Peers::AutomationNotificationKind kind,
+            Microsoft::UI::Xaml::Automation::Peers::AutomationNotificationProcessing processing);
     };
 
     // CalculatorAnnouncement is intended to contain only static methods

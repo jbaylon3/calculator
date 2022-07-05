@@ -11,12 +11,12 @@ using Windows.Graphics.Display;
 using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Navigation;
 using MUXC = Microsoft.UI.Xaml.Controls;
 
 namespace CalculatorApp
@@ -45,7 +45,7 @@ namespace CalculatorApp
 
             KeyboardShortcutManager.Initialize();
 
-            Application.Current.Suspending += App_Suspending;
+            //Application.Current.Suspending += App_Suspending;
             m_model.PropertyChanged += OnAppPropertyChanged;
             m_accessibilitySettings = new AccessibilitySettings();
 
@@ -60,8 +60,8 @@ namespace CalculatorApp
 
         public void UnregisterEventHandlers()
         {
-            Window.Current.SizeChanged -= WindowSizeChanged;
-            m_accessibilitySettings.HighContrastChanged -= OnHighContrastChanged;
+            App.Window.SizeChanged -= WindowSizeChanged;
+            //m_accessibilitySettings.HighContrastChanged -= OnHighContrastChanged;
 
             if (m_calculator != null)
             {
@@ -146,7 +146,7 @@ namespace CalculatorApp
                 NavViewCategoriesSource = ExpandNavViewCategoryGroups(Model.Categories);
             };
 
-            _ = Window.Current.Dispatcher.RunAsync(CoreDispatcherPriority.Low, () =>
+            _ = App.Window.DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, () =>
             {
                 var graphCategory = (NavCategory)NavViewCategoriesSource.Find(x =>
                 {
@@ -177,7 +177,7 @@ namespace CalculatorApp
             return result;
         }
 
-        private void UpdatePopupSize(Windows.UI.Core.WindowSizeChangedEventArgs e)
+        private void UpdatePopupSize(Microsoft.UI.Xaml.WindowSizeChangedEventArgs e)
         {
             if(PopupContent != null)
             {
@@ -186,7 +186,7 @@ namespace CalculatorApp
             }
         }
 
-        private void WindowSizeChanged(object sender, Windows.UI.Core.WindowSizeChangedEventArgs e)
+        private void WindowSizeChanged(object sender, Microsoft.UI.Xaml.WindowSizeChangedEventArgs e)
         {
             // We don't use layout aware page's view states, we have our own
             UpdateViewState();
@@ -326,7 +326,7 @@ namespace CalculatorApp
             {
                 FindName("PopupContent");
 
-                var windowBounds = Window.Current.Bounds;
+                var windowBounds = App.Window.Bounds;
                 PopupContent.Width = windowBounds.Width;
                 PopupContent.Height = windowBounds.Height;
             }
@@ -384,7 +384,7 @@ namespace CalculatorApp
 
         private void TitleBarAlwaysOnTopButtonClick(object sender, RoutedEventArgs e)
         {
-            var bounds = Window.Current.Bounds;
+            var bounds = App.Window.Bounds;
             Model.ToggleAlwaysOnTop((float)bounds.Width, (float)bounds.Height);
         }
 
@@ -456,23 +456,23 @@ namespace CalculatorApp
                 m_model.CalculatorViewModel.IsStandard = true;
             }
 
-            Window.Current.SizeChanged += WindowSizeChanged;
-            m_accessibilitySettings.HighContrastChanged += OnHighContrastChanged;
+            App.Window.SizeChanged += WindowSizeChanged;
+            //m_accessibilitySettings.HighContrastChanged += OnHighContrastChanged;
             UpdateViewState();
 
             SetHeaderAutomationName();
             SetDefaultFocus();
 
             // Delay load things later when we get a chance.
-            _ = Dispatcher.RunAsync(
-                CoreDispatcherPriority.Normal, new DispatchedHandler(() =>
-                {
-                    if (TraceLogger.GetInstance().IsWindowIdInLog(ApplicationView.GetApplicationViewIdForWindow(CoreWindow.GetForCurrentThread())))
-                    {
-                        AppLifecycleLogger.GetInstance().LaunchUIResponsive();
-                        AppLifecycleLogger.GetInstance().LaunchVisibleComplete();
-                    }
-                }));
+            //_ = Dispatcher.RunAsync(
+            //    CoreDispatcherPriority.Normal, new DispatchedHandler(() =>
+            //    {
+            //        if (TraceLogger.GetInstance().IsWindowIdInLog(ApplicationView.GetApplicationViewIdForWindow(CoreWindow.GetForCurrentThread())))
+            //        {
+            //            AppLifecycleLogger.GetInstance().LaunchUIResponsive();
+            //            AppLifecycleLogger.GetInstance().LaunchVisibleComplete();
+            //        }
+            //    }));
         }
 
         private void App_Suspending(object sender, Windows.ApplicationModel.SuspendingEventArgs e)

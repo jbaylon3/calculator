@@ -1,6 +1,6 @@
 using CalculatorApp.ViewModel.Common;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -28,15 +28,15 @@ namespace CalculatorApp
             Num9Button.Content = localizationSettings.GetDigitSymbolFromEnUsDigit('9');
         }
 
-        public Windows.UI.Xaml.Style ButtonStyle
+        public Microsoft.UI.Xaml.Style ButtonStyle
         {
-            get { return (Windows.UI.Xaml.Style)GetValue(ButtonStyleProperty); }
+            get { return (Microsoft.UI.Xaml.Style)GetValue(ButtonStyleProperty); }
             set { SetValue(ButtonStyleProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for ButtonStyle.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ButtonStyleProperty =
-            DependencyProperty.Register(nameof(ButtonStyle), typeof(Windows.UI.Xaml.Style), typeof(NumberPad), new PropertyMetadata(default(Windows.UI.Xaml.Style)));
+            DependencyProperty.Register(nameof(ButtonStyle), typeof(Microsoft.UI.Xaml.Style), typeof(NumberPad), new PropertyMetadata(default(Microsoft.UI.Xaml.Style)));
 
         public CalculatorApp.ViewModel.Common.NumberBase CurrentRadixType
         {

@@ -10,8 +10,8 @@ using namespace std;
 using namespace Windows::Foundation::Collections;
 using namespace Windows::UI;
 using namespace Windows::UI::ViewManagement;
-using namespace Windows::UI::Xaml;
-using namespace Windows::UI::Xaml::Media;
+using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Media;
 
 namespace GraphControl
 {

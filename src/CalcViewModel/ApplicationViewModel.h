@@ -12,7 +12,7 @@ namespace CalculatorApp
 {
     namespace ViewModel
     {
-        [Windows::UI::Xaml::Data::Bindable] public ref class ApplicationViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        [Microsoft::UI::Xaml::Data::Bindable] public ref class ApplicationViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         public:
             ApplicationViewModel();
@@ -61,12 +61,12 @@ namespace CalculatorApp
                 void set(Windows::Foundation::Collections::IObservableVector<CalculatorApp::ViewModel::Common::NavCategoryGroup^>^ value);
             }
 
-            property Windows::UI::Xaml::Visibility ClearMemoryVisibility
+            property Microsoft::UI::Xaml::Visibility ClearMemoryVisibility
             {
-                Windows::UI::Xaml::Visibility get()
+                Microsoft::UI::Xaml::Visibility get()
                 {
-                    return CalculatorApp::ViewModel::Common::NavCategory::IsCalculatorViewMode(Mode) ? Windows::UI::Xaml::Visibility::Visible
-                                                                                          : Windows::UI::Xaml::Visibility::Collapsed;
+                    return CalculatorApp::ViewModel::Common::NavCategory::IsCalculatorViewMode(Mode) ? Microsoft::UI::Xaml::Visibility::Visible
+                                                                                          : Microsoft::UI::Xaml::Visibility::Collapsed;
                 }
             }
 

@@ -12,7 +12,7 @@ namespace CalculatorApp
 {
     namespace ViewModel
     {
-        [Windows::UI::Xaml::Data::Bindable] public ref class DateCalculatorViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        [Microsoft::UI::Xaml::Data::Bindable] public ref class DateCalculatorViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         public:
             DateCalculatorViewModel();

@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 //
@@ -28,6 +28,6 @@ namespace CalculatorUnitTests
 
     private:
         void OnSuspending(Platform::Object ^ sender, Windows::ApplicationModel::SuspendingEventArgs ^ e);
-        void OnNavigationFailed(Platform::Object ^ sender, Windows::UI::Xaml::Navigation::NavigationFailedEventArgs ^ e);
+        void OnNavigationFailed(Platform::Object ^ sender, Microsoft::UI::Xaml::Navigation::NavigationFailedEventArgs ^ e);
     };
 }

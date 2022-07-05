@@ -14,7 +14,7 @@ namespace CalculatorApp
         /// <summary>
         /// Model representation of a single item in the Memory list
         /// </summary>
-        [Windows::UI::Xaml::Data::Bindable] public ref class MemoryItemViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        [Microsoft::UI::Xaml::Data::Bindable] public ref class MemoryItemViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         public:
             MemoryItemViewModel(StandardCalculatorViewModel ^ calcVM)

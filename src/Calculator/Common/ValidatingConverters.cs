@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 using System;
 
@@ -6,7 +6,7 @@ namespace CalculatorApp
 {
     namespace Common
     {
-        public sealed class ValidSelectedItemConverter : Windows.UI.Xaml.Data.IValueConverter
+        public sealed class ValidSelectedItemConverter : Microsoft.UI.Xaml.Data.IValueConverter
         {
             public ValidSelectedItemConverter()
             { }
@@ -25,11 +25,11 @@ namespace CalculatorApp
                 }
 
                 // Stop the binding if the object is nullptr
-                return Windows.UI.Xaml.DependencyProperty.UnsetValue;
+                return Microsoft.UI.Xaml.DependencyProperty.UnsetValue;
             }
         }
 
-        public sealed class ValidSelectedIndexConverter : Windows.UI.Xaml.Data.IValueConverter
+        public sealed class ValidSelectedIndexConverter : Microsoft.UI.Xaml.Data.IValueConverter
         {
             public ValidSelectedIndexConverter()
             { }
@@ -46,10 +46,8 @@ namespace CalculatorApp
                 // extract that value and ensure it is valid, ie >= 0
                 if (value != null)
                 {
-                    var box = value as Windows.Foundation.IPropertyValue;
-                    if (box != null && box.Type == Windows.Foundation.PropertyType.Int32)
+                    if(value is int index)
                     {
-                        int index = box.GetInt32();
                         if (index >= 0)
                         {
                             return value;
@@ -57,7 +55,7 @@ namespace CalculatorApp
                     }
                 }
                 // The value is not valid therefore stop the binding right here
-                return Windows.UI.Xaml.DependencyProperty.UnsetValue;
+                return Microsoft.UI.Xaml.DependencyProperty.UnsetValue;
             }
         }
     }

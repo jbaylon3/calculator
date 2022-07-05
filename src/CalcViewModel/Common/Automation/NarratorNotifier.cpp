@@ -8,9 +8,9 @@
 
 using namespace CalculatorApp::ViewModel::Common::Automation;
 using namespace Platform;
-using namespace Windows::UI::Xaml;
-using namespace Windows::UI::Xaml::Automation;
-using namespace Windows::UI::Xaml::Automation::Peers;
+using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Automation;
+using namespace Microsoft::UI::Xaml::Automation::Peers;
 
 DependencyProperty ^ NarratorNotifier::s_announcementProperty;
 
@@ -24,7 +24,7 @@ void NarratorNotifier::Announce(NarratorAnnouncement ^ announcement)
     {
         if (m_announcementElement == nullptr)
         {
-            m_announcementElement = ref new Windows::UI::Xaml::Controls::TextBlock();
+            m_announcementElement = ref new Microsoft::UI::Xaml::Controls::TextBlock();
         }
 
         auto peer = FrameworkElementAutomationPeer::FromElement(m_announcementElement);

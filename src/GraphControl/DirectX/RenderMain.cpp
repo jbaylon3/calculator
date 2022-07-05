@@ -13,8 +13,8 @@ using namespace Windows::Foundation;
 using namespace Windows::Graphics::Display;
 using namespace Windows::System::Threading;
 using namespace Windows::UI::Core;
-using namespace Windows::UI::Xaml;
-using namespace Windows::UI::Xaml::Controls;
+using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Controls;
 
 namespace
 {
@@ -388,7 +388,7 @@ namespace GraphControl::DX
         UnregisterEventHandlers();
 
         // Register event handlers for control lifecycle.
-        m_coreWindow = Agile<CoreWindow>(Window::Current->CoreWindow);
+        /*m_coreWindow = Agile<CoreWindow>(Window::Current->CoreWindow);
         if (m_coreWindow != nullptr)
         {
             m_tokenVisibilityChanged = m_coreWindow->VisibilityChanged +=
@@ -415,7 +415,7 @@ namespace GraphControl::DX
                 ref new TypedEventHandler<SwapChainPanel ^, Object ^>(this, &RenderMain::OnCompositionScaleChanged);
 
             m_tokenSizeChanged = m_swapChainPanel->SizeChanged += ref new SizeChangedEventHandler(this, &RenderMain::OnSizeChanged);
-        }
+        }*/
     }
 
     void RenderMain::UnregisterEventHandlers()

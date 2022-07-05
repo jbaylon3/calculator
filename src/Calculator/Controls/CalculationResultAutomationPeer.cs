@@ -5,15 +5,15 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation.Peers;
 
 namespace CalculatorApp
 {
     namespace Controls
     {
-        public sealed class CalculationResultAutomationPeer : Windows.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer,
-                                                              Windows.UI.Xaml.Automation.Provider.IInvokeProvider
+        public sealed class CalculationResultAutomationPeer : Microsoft.UI.Xaml.Automation.Peers.FrameworkElementAutomationPeer,
+                                                              Microsoft.UI.Xaml.Automation.Provider.IInvokeProvider
         {
             public CalculationResultAutomationPeer(FrameworkElement owner) : base(owner)
             {

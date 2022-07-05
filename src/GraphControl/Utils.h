@@ -117,17 +117,17 @@ public:
 // This variant of the observable object is for objects that don't want to react to property changes
 #ifndef UNIT_TESTS
 #define OBSERVABLE_OBJECT()                                                                                                                                    \
-    virtual event Windows::UI::Xaml::Data::PropertyChangedEventHandler ^ PropertyChanged;                                                                      \
+    virtual event Microsoft::UI::Xaml::Data::PropertyChangedEventHandler ^ PropertyChanged;                                                                      \
     internal:                                                                                                                                                  \
     void RaisePropertyChanged(Platform::String ^ p)                                                                                                            \
     {                                                                                                                                                          \
-        PropertyChanged(this, ref new Windows::UI::Xaml::Data::PropertyChangedEventArgs(p));                                                                   \
+        PropertyChanged(this, ref new Microsoft::UI::Xaml::Data::PropertyChangedEventArgs(p));                                                                   \
     }                                                                                                                                                          \
                                                                                                                                                                \
 public:
 #else
 #define OBSERVABLE_OBJECT()                                                                                                                                    \
-    virtual event Windows::UI::Xaml::Data::PropertyChangedEventHandler ^ PropertyChanged;                                                                      \
+    virtual event Microsoft::UI::Xaml::Data::PropertyChangedEventHandler ^ PropertyChanged;                                                                      \
     internal:                                                                                                                                                  \
     void RaisePropertyChanged(Platform::String ^ p)                                                                                                            \
     {                                                                                                                                                          \
@@ -140,18 +140,18 @@ public:
 // the callback is supposed to be have a single parameter of type Platform::String^
 #ifndef UNIT_TESTS
 #define OBSERVABLE_OBJECT_CALLBACK(c)                                                                                                                          \
-    virtual event Windows::UI::Xaml::Data::PropertyChangedEventHandler ^ PropertyChanged;                                                                      \
+    virtual event Microsoft::UI::Xaml::Data::PropertyChangedEventHandler ^ PropertyChanged;                                                                      \
     internal:                                                                                                                                                  \
     void RaisePropertyChanged(Platform::String ^ p)                                                                                                            \
     {                                                                                                                                                          \
-        PropertyChanged(this, ref new Windows::UI::Xaml::Data::PropertyChangedEventArgs(p));                                                                   \
+        PropertyChanged(this, ref new Microsoft::UI::Xaml::Data::PropertyChangedEventArgs(p));                                                                   \
         c(p);                                                                                                                                                  \
     }                                                                                                                                                          \
                                                                                                                                                                \
 public:
 #else
 #define OBSERVABLE_OBJECT_CALLBACK(c)                                                                                                                          \
-    virtual event Windows::UI::Xaml::Data::PropertyChangedEventHandler ^ PropertyChanged;                                                                      \
+    virtual event Microsoft::UI::Xaml::Data::PropertyChangedEventHandler ^ PropertyChanged;                                                                      \
     internal:                                                                                                                                                  \
     void RaisePropertyChanged(Platform::String ^ p)                                                                                                            \
     {                                                                                                                                                          \
@@ -164,11 +164,11 @@ public:
 // The variable member generated by this macro should not be used in the class code, use the
 // property getter instead.
 #define COMMAND_FOR_METHOD(p, m)                                                                                                                               \
-    property Windows::UI::Xaml::Input::ICommand^ p {\
-    Windows::UI::Xaml::Input::ICommand^ get() {\
+    property Microsoft::UI::Xaml::Input::ICommand^ p {\
+    Microsoft::UI::Xaml::Input::ICommand^ get() {\
     if (!donotuse_##p) {\
     donotuse_##p = CalculatorApp::Common::MakeDelegate(this, &m);\
-    } return donotuse_##p; }} private: Windows::UI::Xaml::Input::ICommand^ donotuse_##p;                                                                                                          \
+    } return donotuse_##p; }} private: Microsoft::UI::Xaml::Input::ICommand^ donotuse_##p;                                                                                                          \
                                                                                                                                                                \
 public:
 
@@ -221,9 +221,9 @@ namespace Utils
 
     // Regular DependencyProperty
     template <typename TOwner, typename TType>
-    Windows::UI::Xaml::DependencyProperty^ RegisterDependencyProperty(
+    Microsoft::UI::Xaml::DependencyProperty^ RegisterDependencyProperty(
         _In_ const wchar_t* const name,
-        _In_ Windows::UI::Xaml::PropertyMetadata^ metadata)
+        _In_ Microsoft::UI::Xaml::PropertyMetadata^ metadata)
     {
         typedef typename Details::RemoveHat<TOwner>::type OwnerType;
         typedef typename Details::RemoveHat<TType>::type ThisPropertyType;
@@ -231,7 +231,7 @@ namespace Utils
 
         static_assert(Details::IsRefClass<OwnerType>::value, "The owner of a DependencyProperty must be a ref class");
 
-        return Windows::UI::Xaml::DependencyProperty::Register(
+        return Microsoft::UI::Xaml::DependencyProperty::Register(
             Platform::StringReference(name),
             ThisDependencyPropertyType::typeid, // Work around bugs in Xaml by using the filtered type
             OwnerType::typeid,
@@ -239,38 +239,38 @@ namespace Utils
     }
 
     template <typename TOwner, typename TType>
-    Windows::UI::Xaml::DependencyProperty^ RegisterDependencyProperty(_In_ const wchar_t* const name)
+    Microsoft::UI::Xaml::DependencyProperty^ RegisterDependencyProperty(_In_ const wchar_t* const name)
     {
         typedef typename Details::RemoveHat<TType>::type ThisPropertyType;
 
         return RegisterDependencyProperty<TOwner, TType>(
             name,
-            ref new Windows::UI::Xaml::PropertyMetadata(Details::MakeDefault<ThisPropertyType>()));
+            ref new Microsoft::UI::Xaml::PropertyMetadata(Details::MakeDefault<ThisPropertyType>()));
     }
 
     template <typename TOwner, typename TType>
-    Windows::UI::Xaml::DependencyProperty^ RegisterDependencyProperty(_In_ const wchar_t* const name, TType defaultValue)
+    Microsoft::UI::Xaml::DependencyProperty^ RegisterDependencyProperty(_In_ const wchar_t* const name, TType defaultValue)
     {
         return RegisterDependencyProperty<TOwner, TType>(
             name,
-            ref new Windows::UI::Xaml::PropertyMetadata(defaultValue));
+            ref new Microsoft::UI::Xaml::PropertyMetadata(defaultValue));
     }
 
     template <typename TOwner, typename TType, typename TCallback>
-    Windows::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyWithCallback(
+    Microsoft::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyWithCallback(
         _In_ wchar_t const * const name,
         TCallback callback)
     {
         typedef typename Details::RemoveHat<TType>::type ThisPropertyType;
         return RegisterDependencyProperty<TOwner, TType>(
             name,
-            ref new Windows::UI::Xaml::PropertyMetadata(
+            ref new Microsoft::UI::Xaml::PropertyMetadata(
                 Details::MakeDefault<ThisPropertyType>(),
-                ref new Windows::UI::Xaml::PropertyChangedCallback(callback)));
+                ref new Microsoft::UI::Xaml::PropertyChangedCallback(callback)));
     }
 
     template <typename TOwner, typename TType, typename TCallback>
-    Windows::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyWithCallback(
+    Microsoft::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyWithCallback(
         _In_ wchar_t const * const name,
         TType defaultValue,
         TCallback callback)
@@ -278,16 +278,16 @@ namespace Utils
         typedef typename Details::RemoveHat<TType>::type ThisPropertyType;
         return RegisterDependencyProperty<TOwner, TType>(
             name,
-            ref new Windows::UI::Xaml::PropertyMetadata(
+            ref new Microsoft::UI::Xaml::PropertyMetadata(
                 defaultValue,
-                ref new Windows::UI::Xaml::PropertyChangedCallback(callback)));
+                ref new Microsoft::UI::Xaml::PropertyChangedCallback(callback)));
     }
 
     // Attached DependencyProperty
     template <typename TOwner, typename TType>
-    Windows::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyAttached(
+    Microsoft::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyAttached(
         _In_ const wchar_t* const name,
-        _In_ Windows::UI::Xaml::PropertyMetadata^ metadata)
+        _In_ Microsoft::UI::Xaml::PropertyMetadata^ metadata)
     {
         typedef typename Details::RemoveHat<TOwner>::type OwnerType;
         typedef typename Details::RemoveHat<TType>::type ThisPropertyType;
@@ -295,7 +295,7 @@ namespace Utils
 
         static_assert(Details::IsRefClass<OwnerType>::value, "The owner of a DependencyProperty must be a ref class");
 
-        return Windows::UI::Xaml::DependencyProperty::RegisterAttached(
+        return Microsoft::UI::Xaml::DependencyProperty::RegisterAttached(
             Platform::StringReference(name),
             ThisDependencyPropertyType::typeid, // Work around bugs in Xaml by using the filtered type
             OwnerType::typeid,
@@ -303,37 +303,37 @@ namespace Utils
     }
 
     template <typename TOwner, typename TType>
-    Windows::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyAttached(_In_ const wchar_t* const name)
+    Microsoft::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyAttached(_In_ const wchar_t* const name)
     {
         typedef typename Details::RemoveHat<TType>::type ThisPropertyType;
         return RegisterDependencyPropertyAttached<TOwner, TType>(
             name,
-            ref new Windows::UI::Xaml::PropertyMetadata(Details::MakeDefault<ThisPropertyType>()));
+            ref new Microsoft::UI::Xaml::PropertyMetadata(Details::MakeDefault<ThisPropertyType>()));
     }
 
     template <typename TOwner, typename TType>
-    Windows::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyAttached(_In_ const wchar_t* const name, TType defaultValue)
+    Microsoft::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyAttached(_In_ const wchar_t* const name, TType defaultValue)
     {
         return RegisterDependencyPropertyAttached<TOwner, TType>(
             name,
-            ref new Windows::UI::Xaml::PropertyMetadata(defaultValue));
+            ref new Microsoft::UI::Xaml::PropertyMetadata(defaultValue));
     }
 
     template <typename TOwner, typename TType, typename TCallback>
-    Windows::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyAttachedWithCallback(
+    Microsoft::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyAttachedWithCallback(
         _In_ wchar_t const * const name,
         TCallback callback)
     {
         typedef typename Details::RemoveHat<TType>::type ThisPropertyType;
         return RegisterDependencyPropertyAttached<TOwner, TType>(
             name,
-            ref new Windows::UI::Xaml::PropertyMetadata(
+            ref new Microsoft::UI::Xaml::PropertyMetadata(
                 Details::MakeDefault<ThisPropertyType>(),
-                ref new Windows::UI::Xaml::PropertyChangedCallback(callback)));
+                ref new Microsoft::UI::Xaml::PropertyChangedCallback(callback)));
     }
 
     template <typename TOwner, typename TType, typename TCallback>
-    Windows::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyAttachedWithCallback(
+    Microsoft::UI::Xaml::DependencyProperty^ RegisterDependencyPropertyAttachedWithCallback(
         _In_ wchar_t const * const name,
         TType defaultValue,
         TCallback callback)
@@ -341,9 +341,9 @@ namespace Utils
         typedef typename Details::RemoveHat<TType>::type ThisPropertyType;
         return RegisterDependencyPropertyAttached<TOwner, TType>(
             name,
-            ref new Windows::UI::Xaml::PropertyMetadata(
+            ref new Microsoft::UI::Xaml::PropertyMetadata(
                 defaultValue,
-                ref new Windows::UI::Xaml::PropertyChangedCallback(callback)));
+                ref new Microsoft::UI::Xaml::PropertyChangedCallback(callback)));
     }
 }
 
@@ -369,19 +369,19 @@ public:
     }                                                                                                                                                          \
                                                                                                                                                                \
 private:                                                                                                                                                       \
-    static Windows::UI::Xaml::DependencyProperty ^ s_##name##Property;                                                                                         \
+    static Microsoft::UI::Xaml::DependencyProperty ^ s_##name##Property;                                                                                         \
                                                                                                                                                                \
 public:                                                                                                                                                        \
-    static property Windows::UI::Xaml::DependencyProperty ^ name##Property                                                                                     \
+    static property Microsoft::UI::Xaml::DependencyProperty ^ name##Property                                                                                     \
     {                                                                                                                                                          \
-        Windows::UI::Xaml::DependencyProperty ^ get() {                                                                                                        \
+        Microsoft::UI::Xaml::DependencyProperty ^ get() {                                                                                                        \
             assert(s_##name##Property);                                                                                                                        \
             return s_##name##Property;                                                                                                                         \
         }                                                                                                                                                      \
     }                                                                                                                                                          \
                                                                                                                                                                \
 private:                                                                                                                                                       \
-    static Windows::UI::Xaml::DependencyProperty ^ Initialize##name##Property()                                                                                \
+    static Microsoft::UI::Xaml::DependencyProperty ^ Initialize##name##Property()                                                                                \
     {                                                                                                                                                          \
         return Utils::RegisterDependencyProperty<DependencyPropertiesOwner, type>(L#name);                                                                     \
     }                                                                                                                                                          \
@@ -402,23 +402,23 @@ public:
     }                                                                                                                                                          \
                                                                                                                                                                \
 private:                                                                                                                                                       \
-    static Windows::UI::Xaml::DependencyProperty ^ s_##name##Property;                                                                                         \
+    static Microsoft::UI::Xaml::DependencyProperty ^ s_##name##Property;                                                                                         \
                                                                                                                                                                \
 public:                                                                                                                                                        \
-    static property Windows::UI::Xaml::DependencyProperty ^ name##Property                                                                                     \
+    static property Microsoft::UI::Xaml::DependencyProperty ^ name##Property                                                                                     \
     {                                                                                                                                                          \
-        Windows::UI::Xaml::DependencyProperty ^ get() {                                                                                                        \
+        Microsoft::UI::Xaml::DependencyProperty ^ get() {                                                                                                        \
             assert(s_##name##Property);                                                                                                                        \
             return s_##name##Property;                                                                                                                         \
         }                                                                                                                                                      \
     }                                                                                                                                                          \
                                                                                                                                                                \
 private:                                                                                                                                                       \
-    static Windows::UI::Xaml::DependencyProperty ^ Initialize##name##Property()                                                                                \
+    static Microsoft::UI::Xaml::DependencyProperty ^ Initialize##name##Property()                                                                                \
     {                                                                                                                                                          \
         return Utils::RegisterDependencyPropertyWithCallback<DependencyPropertiesOwner, type>(L#name, &On##name##PropertyChangedImpl);                         \
     }                                                                                                                                                          \
-    static void On##name##PropertyChangedImpl(Windows::UI::Xaml::DependencyObject ^ sender, Windows::UI::Xaml::DependencyPropertyChangedEventArgs ^ args)      \
+    static void On##name##PropertyChangedImpl(Microsoft::UI::Xaml::DependencyObject ^ sender, Microsoft::UI::Xaml::DependencyPropertyChangedEventArgs ^ args)      \
     {                                                                                                                                                          \
         auto self = safe_cast<DependencyPropertiesOwner ^>(sender);                                                                                            \
         self->On##name##PropertyChanged(safe_cast<type>(args->OldValue), safe_cast<type>(args->NewValue));                                                     \
@@ -439,19 +439,19 @@ public:
     }                                                                                                                                                          \
                                                                                                                                                                \
 private:                                                                                                                                                       \
-    static Windows::UI::Xaml::DependencyProperty ^ s_##name##Property;                                                                                         \
+    static Microsoft::UI::Xaml::DependencyProperty ^ s_##name##Property;                                                                                         \
                                                                                                                                                                \
 public:                                                                                                                                                        \
-    static property Windows::UI::Xaml::DependencyProperty ^ name##Property                                                                                     \
+    static property Microsoft::UI::Xaml::DependencyProperty ^ name##Property                                                                                     \
     {                                                                                                                                                          \
-        Windows::UI::Xaml::DependencyProperty ^ get() {                                                                                                        \
+        Microsoft::UI::Xaml::DependencyProperty ^ get() {                                                                                                        \
             assert(s_##name##Property);                                                                                                                        \
             return s_##name##Property;                                                                                                                         \
         }                                                                                                                                                      \
     }                                                                                                                                                          \
                                                                                                                                                                \
 private:                                                                                                                                                       \
-    static Windows::UI::Xaml::DependencyProperty ^ Initialize##name##Property()                                                                                \
+    static Microsoft::UI::Xaml::DependencyProperty ^ Initialize##name##Property()                                                                                \
     {                                                                                                                                                          \
         return Utils::RegisterDependencyProperty<DependencyPropertiesOwner, type>(L#name, defaultValue);                                                       \
     }                                                                                                                                                          \
@@ -472,23 +472,23 @@ public:
     }                                                                                                                                                          \
                                                                                                                                                                \
 private:                                                                                                                                                       \
-    static Windows::UI::Xaml::DependencyProperty ^ s_##name##Property;                                                                                         \
+    static Microsoft::UI::Xaml::DependencyProperty ^ s_##name##Property;                                                                                         \
                                                                                                                                                                \
 public:                                                                                                                                                        \
-    static property Windows::UI::Xaml::DependencyProperty ^ name##Property                                                                                     \
+    static property Microsoft::UI::Xaml::DependencyProperty ^ name##Property                                                                                     \
     {                                                                                                                                                          \
-        Windows::UI::Xaml::DependencyProperty ^ get() {                                                                                                        \
+        Microsoft::UI::Xaml::DependencyProperty ^ get() {                                                                                                        \
             assert(s_##name##Property);                                                                                                                        \
             return s_##name##Property;                                                                                                                         \
         }                                                                                                                                                      \
     }                                                                                                                                                          \
                                                                                                                                                                \
 private:                                                                                                                                                       \
-    static Windows::UI::Xaml::DependencyProperty ^ Initialize##name##Property()                                                                                \
+    static Microsoft::UI::Xaml::DependencyProperty ^ Initialize##name##Property()                                                                                \
     {                                                                                                                                                          \
         return Utils::RegisterDependencyPropertyWithCallback<DependencyPropertiesOwner, type>(L#name, &On##name##PropertyChangedImpl);                         \
     }                                                                                                                                                          \
-    static void On##name##PropertyChangedImpl(Windows::UI::Xaml::DependencyObject ^ sender, Windows::UI::Xaml::DependencyPropertyChangedEventArgs ^ args)      \
+    static void On##name##PropertyChangedImpl(Microsoft::UI::Xaml::DependencyObject ^ sender, Microsoft::UI::Xaml::DependencyPropertyChangedEventArgs ^ args)      \
     {                                                                                                                                                          \
         auto self = safe_cast<DependencyPropertiesOwner ^>(sender);                                                                                            \
         self->On##name##PropertyChanged(safe_cast<type>(args->OldValue), safe_cast<type>(args->NewValue));                                                     \
@@ -510,23 +510,23 @@ public:
     }                                                                                                                                                          \
                                                                                                                                                                \
 private:                                                                                                                                                       \
-    static Windows::UI::Xaml::DependencyProperty ^ s_##name##Property;                                                                                         \
+    static Microsoft::UI::Xaml::DependencyProperty ^ s_##name##Property;                                                                                         \
                                                                                                                                                                \
 public:                                                                                                                                                        \
-    static property Windows::UI::Xaml::DependencyProperty ^ name##Property                                                                                     \
+    static property Microsoft::UI::Xaml::DependencyProperty ^ name##Property                                                                                     \
     {                                                                                                                                                          \
-        Windows::UI::Xaml::DependencyProperty ^ get() {                                                                                                        \
+        Microsoft::UI::Xaml::DependencyProperty ^ get() {                                                                                                        \
             assert(s_##name##Property);                                                                                                                        \
             return s_##name##Property;                                                                                                                         \
         }                                                                                                                                                      \
     }                                                                                                                                                          \
                                                                                                                                                                \
 private:                                                                                                                                                       \
-    static Windows::UI::Xaml::DependencyProperty ^ Initialize##name##Property()                                                                                \
+    static Microsoft::UI::Xaml::DependencyProperty ^ Initialize##name##Property()                                                                                \
     {                                                                                                                                                          \
         return Utils::RegisterDependencyPropertyWithCallback<DependencyPropertiesOwner, type>(L#name, defaultValue, &On##name##PropertyChangedImpl);           \
     }                                                                                                                                                          \
-    static void On##name##PropertyChangedImpl(Windows::UI::Xaml::DependencyObject ^ sender, Windows::UI::Xaml::DependencyPropertyChangedEventArgs ^ args)      \
+    static void On##name##PropertyChangedImpl(Microsoft::UI::Xaml::DependencyObject ^ sender, Microsoft::UI::Xaml::DependencyPropertyChangedEventArgs ^ args)      \
     {                                                                                                                                                          \
         auto self = safe_cast<DependencyPropertiesOwner ^>(sender);                                                                                            \
         self->On##name##PropertyChanged(safe_cast<type>(args->OldValue), safe_cast<type>(args->NewValue));                                                     \
@@ -548,23 +548,23 @@ public:
     }                                                                                                                                                          \
                                                                                                                                                                \
 private:                                                                                                                                                       \
-    static Windows::UI::Xaml::DependencyProperty ^ s_##name##Property;                                                                                         \
+    static Microsoft::UI::Xaml::DependencyProperty ^ s_##name##Property;                                                                                         \
                                                                                                                                                                \
 public:                                                                                                                                                        \
-    static property Windows::UI::Xaml::DependencyProperty ^ name##Property                                                                                     \
+    static property Microsoft::UI::Xaml::DependencyProperty ^ name##Property                                                                                     \
     {                                                                                                                                                          \
-        Windows::UI::Xaml::DependencyProperty ^ get() {                                                                                                        \
+        Microsoft::UI::Xaml::DependencyProperty ^ get() {                                                                                                        \
             assert(s_##name##Property);                                                                                                                        \
             return s_##name##Property;                                                                                                                         \
         }                                                                                                                                                      \
     }                                                                                                                                                          \
                                                                                                                                                                \
 private:                                                                                                                                                       \
-    static Windows::UI::Xaml::DependencyProperty ^ Initialize##name##Property()                                                                                \
+    static Microsoft::UI::Xaml::DependencyProperty ^ Initialize##name##Property()                                                                                \
     {                                                                                                                                                          \
         return Utils::RegisterDependencyPropertyWithCallback<DependencyPropertiesOwner, type>(L#name, defaultValue, &On##name##PropertyChangedImpl);           \
     }                                                                                                                                                          \
-    static void On##name##PropertyChangedImpl(Windows::UI::Xaml::DependencyObject ^ sender, Windows::UI::Xaml::DependencyPropertyChangedEventArgs ^ args)      \
+    static void On##name##PropertyChangedImpl(Microsoft::UI::Xaml::DependencyObject ^ sender, Microsoft::UI::Xaml::DependencyPropertyChangedEventArgs ^ args)      \
     {                                                                                                                                                          \
         auto self = safe_cast<DependencyPropertiesOwner ^>(sender);                                                                                            \
         self->On##name##PropertyChanged(safe_cast<type>(args->OldValue), safe_cast<type>(args->NewValue));                                                     \
@@ -573,4 +573,4 @@ private:                                                                        
 public:
 
 // This goes into the cpp to initialize the static variable
-#define DEPENDENCY_PROPERTY_INITIALIZATION(owner, name) Windows::UI::Xaml::DependencyProperty ^ owner::s_##name##Property = owner::Initialize##name##Property();
+#define DEPENDENCY_PROPERTY_INITIALIZATION(owner, name) Microsoft::UI::Xaml::DependencyProperty ^ owner::s_##name##Property = owner::Initialize##name##Property();

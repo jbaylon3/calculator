@@ -21,7 +21,7 @@ namespace Numbers
         // This class's code is run in the designer process so the less code it has the better.
 
     public
-        ref class AppViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        ref class AppViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         public:
             AppViewModel()

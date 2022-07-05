@@ -22,11 +22,11 @@ using namespace Windows::System;
 using namespace Windows::System::Threading;
 using namespace Windows::UI;
 using namespace Windows::UI::Core;
-using namespace Windows::UI::Input;
-using namespace Windows::UI::Xaml;
-using namespace Windows::UI::Xaml::Controls;
-using namespace Windows::UI::Xaml::Input;
-using namespace Windows::UI::Xaml::Media;
+using namespace Microsoft::UI::Input;
+using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Controls;
+using namespace Microsoft::UI::Xaml::Input;
+using namespace Microsoft::UI::Xaml::Media;
 using namespace GraphControl;
 
 DEPENDENCY_PROPERTY_INITIALIZATION(Grapher, ForceProportionalAxes);
@@ -78,9 +78,9 @@ namespace GraphControl
         this->ManipulationMode = ManipulationModes::TranslateX | ManipulationModes::TranslateY | ManipulationModes::TranslateInertia | ManipulationModes::Scale
                                  | ManipulationModes::ScaleInertia;
 
-        auto cw = CoreWindow::GetForCurrentThread();
+        /*auto cw = CoreWindow::GetForCurrentThread();
         cw->KeyDown += ref new TypedEventHandler<CoreWindow ^, KeyEventArgs ^>(this, &Grapher::OnCoreKeyDown);
-        cw->KeyUp += ref new TypedEventHandler<CoreWindow ^, KeyEventArgs ^>(this, &Grapher::OnCoreKeyUp);
+        cw->KeyUp += ref new TypedEventHandler<CoreWindow ^, KeyEventArgs ^>(this, &Grapher::OnCoreKeyUp);*/
 
         auto& formatOptions = m_solver->FormatOptions();
     }

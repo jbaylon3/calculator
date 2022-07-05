@@ -1,8 +1,8 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 
 namespace CalculatorApp
 {
@@ -12,7 +12,7 @@ namespace CalculatorApp
         /// Value converter that translates Visible to Collapsed and vice versa
         /// </summary>
         [Windows.Foundation.Metadata.WebHostHidden]
-        public sealed class VisibilityNegationConverter : Windows.UI.Xaml.Data.IValueConverter
+        public sealed class VisibilityNegationConverter : Microsoft.UI.Xaml.Data.IValueConverter
         {
             public object Convert(object value, Type targetType, object parameter, string language)
             {

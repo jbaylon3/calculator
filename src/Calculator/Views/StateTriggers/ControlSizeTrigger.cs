@@ -4,11 +4,11 @@
 using System;
 
 using Windows.Foundation;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 
 namespace CalculatorApp.Views.StateTriggers
 {
-    public sealed class ControlSizeTrigger : Windows.UI.Xaml.StateTriggerBase
+    public sealed class ControlSizeTrigger : Microsoft.UI.Xaml.StateTriggerBase
     {
         public ControlSizeTrigger()
         {

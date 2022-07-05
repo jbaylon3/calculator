@@ -15,7 +15,7 @@ public
         Separator
     };
 
-    [Windows::UI::Xaml::Data::Bindable] public ref class DisplayExpressionToken sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+    [Microsoft::UI::Xaml::Data::Bindable] public ref class DisplayExpressionToken sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
     {
         internal : DisplayExpressionToken(Platform::String ^ token, int tokenPosition, bool fEditable, TokenType type)
             : m_Token(token)

@@ -33,7 +33,7 @@ namespace CalculatorApp
             bool canSendNegate;
         };
 
-        [Windows::UI::Xaml::Data::Bindable] public ref class StandardCalculatorViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        [Microsoft::UI::Xaml::Data::Bindable] public ref class StandardCalculatorViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         public:
             StandardCalculatorViewModel();

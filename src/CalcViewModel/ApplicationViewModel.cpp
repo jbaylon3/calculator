@@ -26,11 +26,11 @@ using namespace Windows::Foundation::Collections;
 using namespace Windows::Globalization;
 using namespace Windows::UI::ViewManagement;
 using namespace Windows::UI::Core;
-using namespace Windows::UI::Xaml::Automation;
-using namespace Windows::UI::Xaml::Controls;
-using namespace Windows::UI::Xaml::Data;
-using namespace Windows::UI::Xaml::Input;
-using namespace Windows::UI::Xaml::Media;
+using namespace Microsoft::UI::Xaml::Automation;
+using namespace Microsoft::UI::Xaml::Controls;
+using namespace Microsoft::UI::Xaml::Data;
+using namespace Microsoft::UI::Xaml::Input;
+using namespace Microsoft::UI::Xaml::Media;
 using namespace Windows::Foundation;
 using namespace Concurrency;
 
@@ -174,7 +174,7 @@ void ApplicationViewModel::OnModeChanged()
     }
     else
     {
-        TraceLogger::GetInstance()->LogWindowCreated(m_mode, ApplicationView::GetApplicationViewIdForWindow(CoreWindow::GetForCurrentThread()));
+        //TraceLogger::GetInstance()->LogWindowCreated(m_mode, ApplicationView::GetApplicationViewIdForWindow(CoreWindow::GetForCurrentThread()));
     }
 
     RaisePropertyChanged(ClearMemoryVisibilityPropertyName);
@@ -269,6 +269,6 @@ task<void> ApplicationViewModel::HandleToggleAlwaysOnTop(float width, float heig
 
 void ApplicationViewModel::SetDisplayNormalAlwaysOnTopOption()
 {
-    DisplayNormalAlwaysOnTopOption =
-        m_mode == ViewMode::Standard && ApplicationView::GetForCurrentView()->IsViewModeSupported(ApplicationViewMode::CompactOverlay) && !IsAlwaysOnTop;
+    /* DisplayNormalAlwaysOnTopOption =
+        m_mode == ViewMode::Standard && ApplicationView::GetForCurrentView()->IsViewModeSupported(ApplicationViewMode::CompactOverlay) && !IsAlwaysOnTop;*/
 }

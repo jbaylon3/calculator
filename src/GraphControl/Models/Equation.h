@@ -211,7 +211,7 @@ public
         RichEditGeneralError = 210,
     };
 
-    [Windows::UI::Xaml::Data::Bindable] public ref class Equation sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+    [Microsoft::UI::Xaml::Data::Bindable] public ref class Equation sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
     {
     public:
         Equation();

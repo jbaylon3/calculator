@@ -14,7 +14,7 @@ namespace GraphControl
 namespace CalculatorApp::ViewModel
 {
 public
-    ref class GridDisplayItems sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+    ref class GridDisplayItems sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
     {
     public:
         GridDisplayItems();
@@ -25,7 +25,7 @@ public
     };
 
 public
-    ref class KeyGraphFeaturesItem sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+    ref class KeyGraphFeaturesItem sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
     {
     public:
         KeyGraphFeaturesItem();
@@ -38,7 +38,7 @@ public
     };
 
 public
-    ref class EquationViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+    ref class EquationViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
     {
     public:
         EquationViewModel(GraphControl::Equation ^ equation, int functionLabelIndex, Windows::UI::Color color, int colorIndex);

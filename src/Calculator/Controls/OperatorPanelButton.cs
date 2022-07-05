@@ -8,9 +8,9 @@ using System.Diagnostics;
 
 using Windows.Foundation;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using CalculatorApp;
 using CalculatorApp.Common;
 using CalculatorApp.Controls;
@@ -19,7 +19,7 @@ namespace CalculatorApp
 {
     namespace Controls
     {
-        public sealed class OperatorPanelButton : Windows.UI.Xaml.Controls.Primitives.ToggleButton
+        public sealed class OperatorPanelButton : Microsoft.UI.Xaml.Controls.Primitives.ToggleButton
         {
             public OperatorPanelButton()
             {

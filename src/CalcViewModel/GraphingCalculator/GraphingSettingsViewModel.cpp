@@ -11,7 +11,7 @@ using namespace CalcManager::NumberFormattingUtils;
 using namespace GraphControl;
 using namespace std;
 using namespace Platform;
-using namespace Windows::UI::Xaml;
+using namespace Microsoft::UI::Xaml;
 
 GraphingSettingsViewModel::GraphingSettingsViewModel()
     : m_XMinValue(0)

@@ -32,7 +32,7 @@
 #include <DirectXColors.h>
 #include <wincodec.h>
 #include <wrl.h>
-#include <windows.ui.xaml.media.dxinterop.h>
+#include <Microsoft.UI.Xaml.media.dxinterop.h>
 
 // C++/WinRT
 #include "winrtHeaders.h"

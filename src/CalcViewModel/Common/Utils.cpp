@@ -27,8 +27,8 @@ using namespace Windows::Storage::Streams;
 using namespace Windows::UI;
 using namespace Windows::UI::Core;
 using namespace Windows::UI::ViewManagement;
-using namespace Windows::UI::Xaml;
-using namespace Windows::UI::Xaml::Media;
+using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Media;
 using namespace Windows::Foundation;
 using namespace Windows::Storage;
 

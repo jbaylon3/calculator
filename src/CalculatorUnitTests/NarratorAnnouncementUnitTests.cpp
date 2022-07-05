@@ -5,7 +5,7 @@
 #include <CppUnitTest.h>
 
 
-using namespace Windows::UI::Xaml::Automation::Peers;
+using namespace Microsoft::UI::Xaml::Automation::Peers;
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace CalculatorApp::ViewModel::Common::Automation;
 

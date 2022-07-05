@@ -81,5 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="WindowsDev_TemporaryKey.pfx" />
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

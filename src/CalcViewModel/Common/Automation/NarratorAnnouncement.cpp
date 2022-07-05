@@ -6,7 +6,7 @@
 
 using namespace CalculatorApp::ViewModel::Common::Automation;
 using namespace Platform;
-using namespace Windows::UI::Xaml::Automation::Peers;
+using namespace Microsoft::UI::Xaml::Automation::Peers;
 
 namespace CalculatorApp::ViewModel::Common::Automation
 {

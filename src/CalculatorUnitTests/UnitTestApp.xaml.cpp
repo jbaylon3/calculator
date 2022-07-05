@@ -17,14 +17,14 @@ using namespace Windows::ApplicationModel;
 using namespace Windows::ApplicationModel::Activation;
 using namespace Windows::Foundation;
 using namespace Windows::Foundation::Collections;
-using namespace Windows::UI::Xaml;
-using namespace Windows::UI::Xaml::Controls;
-using namespace Windows::UI::Xaml::Controls::Primitives;
-using namespace Windows::UI::Xaml::Data;
-using namespace Windows::UI::Xaml::Input;
-using namespace Windows::UI::Xaml::Interop;
-using namespace Windows::UI::Xaml::Media;
-using namespace Windows::UI::Xaml::Navigation;
+using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Controls;
+using namespace Microsoft::UI::Xaml::Controls::Primitives;
+using namespace Microsoft::UI::Xaml::Data;
+using namespace Microsoft::UI::Xaml::Input;
+using namespace Microsoft::UI::Xaml::Interop;
+using namespace Microsoft::UI::Xaml::Media;
+using namespace Microsoft::UI::Xaml::Navigation;
 
 // The Blank Application template is documented at https://go.microsoft.com/fwlink/?LinkId=402347&clcid=0x409
 
@@ -64,7 +64,7 @@ void App::OnLaunched(Windows::ApplicationModel::Activation::LaunchActivatedEvent
         // a SuspensionManager key
         rootFrame = ref new Frame();
 
-        rootFrame->NavigationFailed += ref new Windows::UI::Xaml::Navigation::NavigationFailedEventHandler(this, &App::OnNavigationFailed);
+        rootFrame->NavigationFailed += ref new Microsoft::UI::Xaml::Navigation::NavigationFailedEventHandler(this, &App::OnNavigationFailed);
 
         if (e->PreviousExecutionState == ApplicationExecutionState::Terminated)
         {
@@ -106,7 +106,7 @@ void App::OnSuspending(Object ^ sender, SuspendingEventArgs ^ e)
 /// </summary>
 /// <param name="sender">The Frame which failed navigation</param>
 /// <param name="e">Details about the navigation failure</param>
-void App::OnNavigationFailed(Platform::Object ^ sender, Windows::UI::Xaml::Navigation::NavigationFailedEventArgs ^ e)
+void App::OnNavigationFailed(Platform::Object ^ sender, Microsoft::UI::Xaml::Navigation::NavigationFailedEventArgs ^ e)
 {
     throw ref new FailureException("Failed to load Page " + e->SourcePageType.Name);
 }

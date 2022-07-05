@@ -10,12 +10,12 @@ using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using CalculatorApp.ViewModel.Common.Automation;
 using Windows.UI.Core;
-using Windows.UI.Xaml.Automation.Peers;
-using Windows.UI.Xaml.Automation.Provider;
+using Microsoft.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml.Automation.Provider;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -25,7 +25,7 @@ namespace CalculatorApp
     {
         private const string BUILD_YEAR = "2022";
 
-        public event Windows.UI.Xaml.RoutedEventHandler BackButtonClick;
+        public event Microsoft.UI.Xaml.RoutedEventHandler BackButtonClick;
 
         public GridLength TitleBarHeight
         {
@@ -69,7 +69,14 @@ namespace CalculatorApp
         // OnLoaded would be invoked by Popup several times while contructed once
         private void OnLoaded(object sender, RoutedEventArgs args)
         {
-            SystemNavigationManager.GetForCurrentView().BackRequested += System_BackRequested;
+
+            /*
+              
+            TODO UA307 Default back button in the title bar does not exist in WinUI3 apps.
+            The tool has generated a custom back button "UAGeneratedBackButton" in the XAML file.
+            Feel free to edit its position, behavior and use the custom back button instead.
+            Read: https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/case-study-1#restoring-back-button-functionality
+            */SystemNavigationManager.GetForCurrentView().BackRequested += System_BackRequested;
 
             AnnouncePageOpened();
 

@@ -9,7 +9,7 @@
 
 namespace CalculatorApp::ViewModel
 {
-    [Windows::UI::Xaml::Data::Bindable] public ref class GraphingCalculatorViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+    [Microsoft::UI::Xaml::Data::Bindable] public ref class GraphingCalculatorViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
     {
     public:
         GraphingCalculatorViewModel();

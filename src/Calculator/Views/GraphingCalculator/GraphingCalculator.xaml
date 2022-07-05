@@ -612,11 +612,13 @@
                                   Margin="4"
                                   Style="{ThemeResource ThemedGraphToggleButtonStyle}"
                                   contract7Present:CornerRadius="{ThemeResource ControlCornerRadius}"
-                                  AutomationProperties.Name="{x:Bind local:GraphingCalculator.GetTracingLegend(GraphingControl.ActiveTracing), Mode=OneWay}"
+                                  
                                   Checked="ActiveTracing_Checked"
-                                  IsChecked="{x:Bind GraphingControl.ActiveTracing, Mode=TwoWay}"
+                                  
                                   Unchecked="ActiveTracing_Unchecked">
                         <ToggleButton.Resources>
+                            <!--.Name="{x:Bind local:GraphingCalculator.GetTracingLegend(GraphingControl.ActiveTracing), Mode=OneWay}"-->
+                            <!--" IsChecked="{x:Bind GraphingControl.ActiveTracing, Mode=TwoWay}"-->
                             <ResourceDictionary>
                                 <ResourceDictionary.ThemeDictionaries>
                                     <ResourceDictionary x:Key="Default">

@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
@@ -6,20 +6,20 @@ using System.Collections;
 using System.Collections.Generic;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Data;
 
 namespace CalculatorApp
 {
     namespace Common
     {
-        sealed class AlwaysSelectedCollectionView : Windows.UI.Xaml.DependencyObject, Windows.UI.Xaml.Data.ICollectionView
+        sealed class AlwaysSelectedCollectionView : Microsoft.UI.Xaml.DependencyObject, Microsoft.UI.Xaml.Data.ICollectionView
         {
             internal AlwaysSelectedCollectionView(IList source)
             {
                 m_currentPosition = -1;
                 m_source = source;
 
-                var observable = source as Windows.UI.Xaml.Interop.IBindableObservableVector;
+                var observable = source as Microsoft.UI.Xaml.Interop.IBindableObservableVector;
                 if (observable != null)
                 {
                     observable.VectorChanged += OnSourceBindableVectorChanged;
@@ -216,7 +216,7 @@ namespace CalculatorApp
             }
 
             // Event handlers
-            void OnSourceBindableVectorChanged(Windows.UI.Xaml.Interop.IBindableObservableVector source, object e)
+            void OnSourceBindableVectorChanged(Microsoft.UI.Xaml.Interop.IBindableObservableVector source, object e)
             {
                 Windows.Foundation.Collections.IVectorChangedEventArgs args = (Windows.Foundation.Collections.IVectorChangedEventArgs)e;
                 VectorChanged?.Invoke(this, args);
@@ -234,7 +234,7 @@ namespace CalculatorApp
             int m_currentPosition;
         }
 
-        public sealed class AlwaysSelectedCollectionViewConverter : Windows.UI.Xaml.Data.IValueConverter
+        public sealed class AlwaysSelectedCollectionViewConverter : Microsoft.UI.Xaml.Data.IValueConverter
         {
             public AlwaysSelectedCollectionViewConverter()
             {
@@ -247,12 +247,12 @@ namespace CalculatorApp
                 {
                     return new AlwaysSelectedCollectionView(result);
                 }
-                return Windows.UI.Xaml.DependencyProperty.UnsetValue; // Can't convert
+                return Microsoft.UI.Xaml.DependencyProperty.UnsetValue; // Can't convert
             }
 
             public object ConvertBack(object value, Type targetType, object parameter, string language)
             {
-                return Windows.UI.Xaml.DependencyProperty.UnsetValue;
+                return Microsoft.UI.Xaml.DependencyProperty.UnsetValue;
             }
         }
     }

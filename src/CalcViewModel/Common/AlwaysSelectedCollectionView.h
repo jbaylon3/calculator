@@ -7,18 +7,18 @@ namespace CalculatorApp
 {
     namespace Common
     {
-        ref class AlwaysSelectedCollectionView sealed : public Windows::UI::Xaml::DependencyObject, public Windows::UI::Xaml::Data::ICollectionView
+        ref class AlwaysSelectedCollectionView sealed : public Microsoft::UI::Xaml::DependencyObject, public Microsoft::UI::Xaml::Data::ICollectionView
         {
-            internal : AlwaysSelectedCollectionView(Windows::UI::Xaml::Interop::IBindableVector ^ source)
+            internal : AlwaysSelectedCollectionView(Microsoft::UI::Xaml::Interop::IBindableVector ^ source)
                 : m_currentPosition(-1)
             {
                 m_source = source;
 
-                Windows::UI::Xaml::Interop::IBindableObservableVector ^ observable =
-                    dynamic_cast<Windows::UI::Xaml::Interop::IBindableObservableVector ^>(source);
+                Microsoft::UI::Xaml::Interop::IBindableObservableVector ^ observable =
+                    dynamic_cast<Microsoft::UI::Xaml::Interop::IBindableObservableVector ^>(source);
                 if (observable)
                 {
-                    observable->VectorChanged += ref new Windows::UI::Xaml::Interop::BindableVectorChangedEventHandler(
+                    observable->VectorChanged += ref new Microsoft::UI::Xaml::Interop::BindableVectorChangedEventHandler(
                         this, &AlwaysSelectedCollectionView::OnSourceBindableVectorChanged);
                 }
             }
@@ -27,42 +27,42 @@ namespace CalculatorApp
             // ICollectionView
             // Not implemented methods
             virtual WF::IAsyncOperation<
-                Windows::UI::Xaml::Data::LoadMoreItemsResult> ^ LoadMoreItemsAsync(unsigned int) = Windows::UI::Xaml::Data::ICollectionView::LoadMoreItemsAsync
+                Microsoft::UI::Xaml::Data::LoadMoreItemsResult> ^ LoadMoreItemsAsync(unsigned int) = Microsoft::UI::Xaml::Data::ICollectionView::LoadMoreItemsAsync
             {
                 throw ref new Platform::NotImplementedException();
             }
-            virtual bool MoveCurrentToFirst() = Windows::UI::Xaml::Data::ICollectionView::MoveCurrentToFirst
+            virtual bool MoveCurrentToFirst() = Microsoft::UI::Xaml::Data::ICollectionView::MoveCurrentToFirst
             {
                 throw ref new Platform::NotImplementedException();
             }
-            virtual bool MoveCurrentToLast() = Windows::UI::Xaml::Data::ICollectionView::MoveCurrentToLast
+            virtual bool MoveCurrentToLast() = Microsoft::UI::Xaml::Data::ICollectionView::MoveCurrentToLast
             {
                 throw ref new Platform::NotImplementedException();
             }
-            virtual bool MoveCurrentToNext() = Windows::UI::Xaml::Data::ICollectionView::MoveCurrentToNext
+            virtual bool MoveCurrentToNext() = Microsoft::UI::Xaml::Data::ICollectionView::MoveCurrentToNext
             {
                 throw ref new Platform::NotImplementedException();
             }
-            virtual bool MoveCurrentToPrevious() = Windows::UI::Xaml::Data::ICollectionView::MoveCurrentToPrevious
+            virtual bool MoveCurrentToPrevious() = Microsoft::UI::Xaml::Data::ICollectionView::MoveCurrentToPrevious
             {
                 throw ref new Platform::NotImplementedException();
             }
             property Windows::Foundation::Collections::IObservableVector<Platform::Object ^> ^ CollectionGroups {
                 virtual Windows::Foundation::Collections::IObservableVector<
-                    Platform::Object ^> ^ get() = Windows::UI::Xaml::Data::ICollectionView::CollectionGroups::get
+                    Platform::Object ^> ^ get() = Microsoft::UI::Xaml::Data::ICollectionView::CollectionGroups::get
                 {
                     return ref new Platform::Collections::Vector<Platform::Object ^>();
                 }
             } property bool HasMoreItems
             {
-                virtual bool get() = Windows::UI::Xaml::Data::ICollectionView::HasMoreItems::get
+                virtual bool get() = Microsoft::UI::Xaml::Data::ICollectionView::HasMoreItems::get
                 {
                     return false;
                 }
             }
 
             // Implemented methods
-            virtual bool MoveCurrentTo(Platform::Object ^ item) = Windows::UI::Xaml::Data::ICollectionView::MoveCurrentTo
+            virtual bool MoveCurrentTo(Platform::Object ^ item) = Microsoft::UI::Xaml::Data::ICollectionView::MoveCurrentTo
             {
                 if (item)
                 {
@@ -88,7 +88,7 @@ namespace CalculatorApp
                 return false;
             }
 
-            virtual bool MoveCurrentToPosition(int index) = Windows::UI::Xaml::Data::ICollectionView::MoveCurrentToPosition
+            virtual bool MoveCurrentToPosition(int index) = Microsoft::UI::Xaml::Data::ICollectionView::MoveCurrentToPosition
             {
                 if (index < 0 || index >= static_cast<int>(m_source->Size))
                 {
@@ -102,7 +102,7 @@ namespace CalculatorApp
 
             property Platform::Object^ CurrentItem
         {
-            virtual Platform::Object^ get() = Windows::UI::Xaml::Data::ICollectionView::CurrentItem::get
+            virtual Platform::Object^ get() = Microsoft::UI::Xaml::Data::ICollectionView::CurrentItem::get
             {
                 if (m_currentPosition >= 0 && m_currentPosition < static_cast<int>(m_source->Size))
                 {
@@ -114,7 +114,7 @@ namespace CalculatorApp
 
         property int CurrentPosition
             {
-                virtual int get() = Windows::UI::Xaml::Data::ICollectionView::CurrentPosition::get
+                virtual int get() = Microsoft::UI::Xaml::Data::ICollectionView::CurrentPosition::get
                 {
                     return m_currentPosition;
                 }
@@ -122,7 +122,7 @@ namespace CalculatorApp
 
             property bool IsCurrentAfterLast
             {
-                virtual bool get() = Windows::UI::Xaml::Data::ICollectionView::IsCurrentAfterLast::get
+                virtual bool get() = Microsoft::UI::Xaml::Data::ICollectionView::IsCurrentAfterLast::get
                 {
                     return m_currentPosition >= static_cast<int>(m_source->Size);
                 }
@@ -130,7 +130,7 @@ namespace CalculatorApp
 
             property bool IsCurrentBeforeFirst
             {
-                virtual bool get() = Windows::UI::Xaml::Data::ICollectionView::IsCurrentBeforeFirst::get
+                virtual bool get() = Microsoft::UI::Xaml::Data::ICollectionView::IsCurrentBeforeFirst::get
                 {
                     return m_currentPosition < 0;
                 }
@@ -138,22 +138,22 @@ namespace CalculatorApp
 
             event WF::EventHandler<Platform::Object^>^ CurrentChanged
         {
-            virtual WF::EventRegistrationToken add(WF::EventHandler<Platform::Object^>^ handler) = Windows::UI::Xaml::Data::ICollectionView::CurrentChanged::add
+            virtual WF::EventRegistrationToken add(WF::EventHandler<Platform::Object^>^ handler) = Microsoft::UI::Xaml::Data::ICollectionView::CurrentChanged::add
             {
                 return m_currentChanged += handler;
             }
-            virtual void remove(WF::EventRegistrationToken token) = Windows::UI::Xaml::Data::ICollectionView::CurrentChanged::remove
+            virtual void remove(WF::EventRegistrationToken token) = Microsoft::UI::Xaml::Data::ICollectionView::CurrentChanged::remove
             {
                 m_currentChanged -= token;
             }
         }
-        event Windows::UI::Xaml::Data::CurrentChangingEventHandler^ CurrentChanging
+        event Microsoft::UI::Xaml::Data::CurrentChangingEventHandler^ CurrentChanging
         {
-            virtual WF::EventRegistrationToken add(Windows::UI::Xaml::Data::CurrentChangingEventHandler^ handler) = Windows::UI::Xaml::Data::ICollectionView::CurrentChanging::add
+            virtual WF::EventRegistrationToken add(Microsoft::UI::Xaml::Data::CurrentChangingEventHandler^ handler) = Microsoft::UI::Xaml::Data::ICollectionView::CurrentChanging::add
             {
                 return m_currentChanging += handler;
             }
-            virtual void remove(WF::EventRegistrationToken token) = Windows::UI::Xaml::Data::ICollectionView::CurrentChanging::remove
+            virtual void remove(WF::EventRegistrationToken token) = Microsoft::UI::Xaml::Data::ICollectionView::CurrentChanging::remove
             {
                 m_currentChanging -= token;
             }
@@ -242,21 +242,21 @@ namespace CalculatorApp
             }
 
             // Event handlers
-            void OnSourceBindableVectorChanged(Windows::UI::Xaml::Interop::IBindableObservableVector ^ source, Platform::Object ^ e)
+            void OnSourceBindableVectorChanged(Microsoft::UI::Xaml::Interop::IBindableObservableVector ^ source, Platform::Object ^ e)
             {
                 Windows::Foundation::Collections::IVectorChangedEventArgs ^ args = safe_cast<Windows::Foundation::Collections::IVectorChangedEventArgs ^>(e);
                 m_vectorChanged(this, args);
             }
 
-            Windows::UI::Xaml::Interop::IBindableVector ^ m_source;
+            Microsoft::UI::Xaml::Interop::IBindableVector ^ m_source;
             int m_currentPosition;
             event WF::EventHandler<Platform::Object ^> ^ m_currentChanged;
-            event Windows::UI::Xaml::Data::CurrentChangingEventHandler ^ m_currentChanging;
+            event Microsoft::UI::Xaml::Data::CurrentChangingEventHandler ^ m_currentChanging;
             event Windows::Foundation::Collections::VectorChangedEventHandler<Platform::Object ^> ^ m_vectorChanged;
         };
 
     public
-        ref class AlwaysSelectedCollectionViewConverter sealed : public Windows::UI::Xaml::Data::IValueConverter
+        ref class AlwaysSelectedCollectionViewConverter sealed : public Microsoft::UI::Xaml::Data::IValueConverter
         {
         public:
             AlwaysSelectedCollectionViewConverter()
@@ -267,26 +267,26 @@ namespace CalculatorApp
             virtual Platform::Object
                 ^ Convert(
                     Platform::Object ^ value,
-                    Windows::UI::Xaml::Interop::TypeName /*targetType*/,
+                    Microsoft::UI::Xaml::Interop::TypeName /*targetType*/,
                     Platform::Object ^ /*parameter*/,
-                    Platform::String ^ /*language*/) = Windows::UI::Xaml::Data::IValueConverter::Convert
+                    Platform::String ^ /*language*/) = Microsoft::UI::Xaml::Data::IValueConverter::Convert
             {
-                auto result = dynamic_cast<Windows::UI::Xaml::Interop::IBindableVector ^>(value);
+                auto result = dynamic_cast<Microsoft::UI::Xaml::Interop::IBindableVector ^>(value);
                 if (result)
                 {
                     return ref new AlwaysSelectedCollectionView(result);
                 }
-                return Windows::UI::Xaml::DependencyProperty::UnsetValue; // Can't convert
+                return Microsoft::UI::Xaml::DependencyProperty::UnsetValue; // Can't convert
             }
 
             virtual Platform::Object
                 ^ ConvertBack(
                     Platform::Object ^ /*value*/,
-                    Windows::UI::Xaml::Interop::TypeName /*targetType*/,
+                    Microsoft::UI::Xaml::Interop::TypeName /*targetType*/,
                     Platform::Object ^ /*parameter*/,
-                    Platform::String ^ /*language*/) = Windows::UI::Xaml::Data::IValueConverter::ConvertBack
+                    Platform::String ^ /*language*/) = Microsoft::UI::Xaml::Data::IValueConverter::ConvertBack
             {
-                return Windows::UI::Xaml::DependencyProperty::UnsetValue;
+                return Microsoft::UI::Xaml::DependencyProperty::UnsetValue;
             }
         };
     }

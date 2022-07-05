@@ -1,19 +1,19 @@
-﻿using CalculatorApp.ViewModel;
+using CalculatorApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace CalculatorApp
 {
-    public sealed class DelighterUnitToStyleConverter : Windows.UI.Xaml.Data.IValueConverter
+    public sealed class DelighterUnitToStyleConverter : Microsoft.UI.Xaml.Data.IValueConverter
     {
         public DelighterUnitToStyleConverter()
         {
-            m_delighters = new Windows.UI.Xaml.ResourceDictionary();
+            m_delighters = new Microsoft.UI.Xaml.ResourceDictionary();
             m_delighters.Source = new Uri(@"ms-appx:///Views/DelighterUnitStyles.xaml");
         }
 
@@ -37,21 +37,21 @@ namespace CalculatorApp
             return null;
         }
 
-        private Windows.UI.Xaml.ResourceDictionary m_delighters;
+        private Microsoft.UI.Xaml.ResourceDictionary m_delighters;
     }
 
-    public sealed class SupplementaryResultDataTemplateSelector : Windows.UI.Xaml.Controls.DataTemplateSelector
+    public sealed class SupplementaryResultDataTemplateSelector : Microsoft.UI.Xaml.Controls.DataTemplateSelector
     {
         public SupplementaryResultDataTemplateSelector()
         { }
 
-        public Windows.UI.Xaml.DataTemplate RegularTemplate
+        public Microsoft.UI.Xaml.DataTemplate RegularTemplate
         {
             get => m_regularTemplate;
             set => m_regularTemplate = value;
         }
 
-        public Windows.UI.Xaml.DataTemplate DelighterTemplate
+        public Microsoft.UI.Xaml.DataTemplate DelighterTemplate
         {
             get => m_delighterTemplate;
             set => m_delighterTemplate = value;
@@ -70,8 +70,8 @@ namespace CalculatorApp
             }
         }
 
-        private Windows.UI.Xaml.DataTemplate m_regularTemplate;
-        private Windows.UI.Xaml.DataTemplate m_delighterTemplate;
+        private Microsoft.UI.Xaml.DataTemplate m_regularTemplate;
+        private Microsoft.UI.Xaml.DataTemplate m_delighterTemplate;
     }
 
     public sealed class SupplementaryResultNoOverflowStackPanel : CalculatorApp.Controls.HorizontalNoOverflowStackPanel

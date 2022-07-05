@@ -1,8 +1,8 @@
 using CalculatorApp.ViewModel;
 using CalculatorApp.ViewModel.Common;
 using System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using MUXC = Microsoft.UI.Xaml.Controls;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
@@ -33,15 +33,15 @@ namespace CalculatorApp
             }
         }
 
-        public Windows.UI.Xaml.GridLength RowHeight
+        public Microsoft.UI.Xaml.GridLength RowHeight
         {
-            get { return (Windows.UI.Xaml.GridLength)GetValue(RowHeightProperty); }
+            get { return (Microsoft.UI.Xaml.GridLength)GetValue(RowHeightProperty); }
             set { SetValue(RowHeightProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for RowHeight.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty RowHeightProperty =
-            DependencyProperty.Register(nameof(RowHeight), typeof(Windows.UI.Xaml.GridLength), typeof(HistoryList), new PropertyMetadata(default(Windows.UI.Xaml.GridLength)));
+            DependencyProperty.Register(nameof(RowHeight), typeof(Microsoft.UI.Xaml.GridLength), typeof(HistoryList), new PropertyMetadata(default(Microsoft.UI.Xaml.GridLength)));
 
         public static string GetHistoryItemAutomationName(string accExpression, string accResult)
         {

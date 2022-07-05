@@ -23,11 +23,11 @@ using namespace Windows::Globalization::Fonts;
 using namespace Windows::Globalization::NumberFormatting;
 using namespace Windows::System::UserProfile;
 using namespace Windows::UI::Text;
-using namespace Windows::UI::Xaml;
-using namespace Windows::UI::Xaml::Controls;
-using namespace Windows::UI::Xaml::Controls::Primitives;
-using namespace Windows::UI::Xaml::Documents;
-using namespace Windows::UI::Xaml::Media;
+using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Controls;
+using namespace Microsoft::UI::Xaml::Controls::Primitives;
+using namespace Microsoft::UI::Xaml::Documents;
+using namespace Microsoft::UI::Xaml::Media;
 
 DEPENDENCY_PROPERTY_INITIALIZATION(LocalizationService, FontType);
 DEPENDENCY_PROPERTY_INITIALIZATION(LocalizationService, FontSize);

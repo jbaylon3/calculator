@@ -162,4 +162,7 @@
     </ClInclude>
     <ClInclude Include="NumberFormattingUtils.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

@@ -1,16 +1,16 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using CalculatorApp.ViewModel.Common;
 using System;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 
 namespace CalculatorApp
 {
     namespace Converters
     {
-        [Windows.UI.Xaml.Data.Bindable]
-        public sealed class ExpressionItemTemplateSelector : Windows.UI.Xaml.Controls.DataTemplateSelector
+        [Microsoft.UI.Xaml.Data.Bindable]
+        public sealed class ExpressionItemTemplateSelector : Microsoft.UI.Xaml.Controls.DataTemplateSelector
         {
             protected override DataTemplate SelectTemplateCore(object item, DependencyObject container)
             {
@@ -35,7 +35,7 @@ namespace CalculatorApp
                 return m_separatorTemplate;
             }
 
-            public Windows.UI.Xaml.DataTemplate OperatorTemplate
+            public Microsoft.UI.Xaml.DataTemplate OperatorTemplate
             {
                 get
                 {
@@ -48,7 +48,7 @@ namespace CalculatorApp
                 }
             }
 
-            public Windows.UI.Xaml.DataTemplate OperandTemplate
+            public Microsoft.UI.Xaml.DataTemplate OperandTemplate
             {
                 get
                 {
@@ -61,7 +61,7 @@ namespace CalculatorApp
                 }
             }
 
-            public Windows.UI.Xaml.DataTemplate SeparatorTemplate
+            public Microsoft.UI.Xaml.DataTemplate SeparatorTemplate
             {
                 get
                 {
@@ -74,9 +74,9 @@ namespace CalculatorApp
                 }
             }
 
-            private Windows.UI.Xaml.DataTemplate m_operatorTemplate;
-            private Windows.UI.Xaml.DataTemplate m_operandTemplate;
-            private Windows.UI.Xaml.DataTemplate m_separatorTemplate;
+            private Microsoft.UI.Xaml.DataTemplate m_operatorTemplate;
+            private Microsoft.UI.Xaml.DataTemplate m_operandTemplate;
+            private Microsoft.UI.Xaml.DataTemplate m_separatorTemplate;
         }
     }
 }

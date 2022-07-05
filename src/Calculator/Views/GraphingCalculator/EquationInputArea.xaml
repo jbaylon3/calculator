@@ -737,7 +737,7 @@
                                                             <SolidColorBrush x:Name="ToggleButtonRevealBackgroundCheckedPressed" Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=EquationColor.Color}"/>
                                                             <SolidColorBrush x:Name="ToggleButtonRevealBackgroundPressed" Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=EquationColor.Color}"/>
                                                             <SolidColorBrush x:Name="ToggleButtonRevealBackgroundPointerOver" Color="{ThemeResource SubtleFillColorSecondary}"/>
-                                                            <RevealBorderBrush x:Key="ToggleButtonRevealBorderBrush"
+                                                            <!--<RevealBorderBrush x:Key="ToggleButtonRevealBorderBrush"
                                                                                Opacity="0.33"
                                                                                FallbackColor="Transparent"
                                                                                TargetTheme="{ThemeResource CalcApplicationTheme}"
@@ -746,7 +746,7 @@
                                                                                Opacity="0.33"
                                                                                FallbackColor="{StaticResource SystemBaseMediumLowColor}"
                                                                                TargetTheme="{ThemeResource CalcApplicationTheme}"
-                                                                               Color="{StaticResource SystemRevealBaseMediumLowColor}"/>
+                                                                               Color="{StaticResource SystemRevealBaseMediumLowColor}"/>-->
                                                         </ResourceDictionary>
                                                         <ResourceDictionary x:Key="HighContrast"/>
                                                     </ResourceDictionary.ThemeDictionaries>

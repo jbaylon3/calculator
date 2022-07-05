@@ -17,15 +17,15 @@ using Windows.Foundation.Collections;
 using Windows.Globalization.NumberFormatting;
 using Windows.System;
 using Windows.UI.Core;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation;
-using Windows.UI.Xaml.Automation.Peers;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 using Windows.System.Threading;
 using Windows.UI.ViewManagement;
 
@@ -238,14 +238,14 @@ namespace CalculatorApp
             string memoryPaneName = AppResourceProvider.GetInstance().GetResourceString("MemoryPane");
             MemoryFlyout.FlyoutPresenterStyle.Setters.Add(new Setter(AutomationProperties.NameProperty, memoryPaneName));
 
-            if (Windows.Foundation.Metadata.ApiInformation.IsEventPresent("Windows.UI.Xaml.Controls.Primitives.FlyoutBase", "Closing"))
+            if (Windows.Foundation.Metadata.ApiInformation.IsEventPresent("Microsoft.UI.Xaml.Controls.Primitives.FlyoutBase", "Closing"))
             {
                 HistoryFlyout.Closing += HistoryFlyout_Closing;
                 MemoryFlyout.Closing += OnMemoryFlyoutClosing;
             }
 
             // Delay load things later when we get a chance.
-            WeakReference weakThis = new WeakReference(this);
+            /*WeakReference weakThis = new WeakReference(this);
             _ = this.Dispatcher.RunAsync(
                 CoreDispatcherPriority.Normal, new DispatchedHandler(() => {
                     if (TraceLogger.GetInstance().IsWindowIdInLog(ApplicationView.GetApplicationViewIdForWindow(CoreWindow.GetForCurrentThread())))
@@ -256,7 +256,7 @@ namespace CalculatorApp
                             refThis.GetMemory();
                         }
                     }
-                }));
+                }));*/
         }
 
         private void LoadResourceStrings()
@@ -629,7 +629,7 @@ namespace CalculatorApp
             }
         }
 
-        private Windows.UI.Xaml.Controls.MenuFlyout m_displayFlyout;
+        private Microsoft.UI.Xaml.Controls.MenuFlyout m_displayFlyout;
         private bool m_doAnimate;
         private bool m_resultAnimate;
         private bool m_isLastAnimatedInScientific;
@@ -644,7 +644,7 @@ namespace CalculatorApp
         private string m_dockPanelHistoryMemoryLists;
         private string m_dockPanelMemoryList;
 
-        private Windows.UI.Xaml.Controls.PivotItem m_pivotItem;
+        private Microsoft.UI.Xaml.Controls.PivotItem m_pivotItem;
         private Memory m_memory;
 
         private void HistoryFlyout_Opened(object sender, object args)

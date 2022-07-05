@@ -12,15 +12,15 @@ using CalculatorApp.Controls;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Devices.Input;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation;
-using Windows.UI.Xaml.Automation.Peers;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Store;
 
 namespace CalculatorApp
@@ -33,7 +33,7 @@ namespace CalculatorApp
             Above
         };
 
-        public sealed class OverflowTextBlock : Windows.UI.Xaml.Controls.Control
+        public sealed class OverflowTextBlock : Microsoft.UI.Xaml.Controls.Control
         {
             public OverflowTextBlock()
             {
@@ -83,7 +83,7 @@ namespace CalculatorApp
             public static readonly DependencyProperty IsActiveProperty =
                 DependencyProperty.Register(nameof(IsActive), typeof(bool), typeof(OverflowTextBlock), new PropertyMetadata(default(bool)));
 
-            public Windows.UI.Xaml.Style TextStyle
+            public Microsoft.UI.Xaml.Style TextStyle
             {
                 get { return (Style)GetValue(TextStyleProperty); }
                 set { SetValue(TextStyleProperty, value); }
@@ -324,11 +324,11 @@ namespace CalculatorApp
             private const double SCROLL_RATIO = 0.7;
 
             private bool m_isAccessibilityViewControl;
-            private Windows.UI.Xaml.FrameworkElement m_expressionContent;
-            private Windows.UI.Xaml.Controls.ItemsControl m_itemsControl;
-            private Windows.UI.Xaml.Controls.ScrollViewer m_expressionContainer;
-            private Windows.UI.Xaml.Controls.Button m_scrollLeft;
-            private Windows.UI.Xaml.Controls.Button m_scrollRight;
+            private Microsoft.UI.Xaml.FrameworkElement m_expressionContent;
+            private Microsoft.UI.Xaml.Controls.ItemsControl m_itemsControl;
+            private Microsoft.UI.Xaml.Controls.ScrollViewer m_expressionContainer;
+            private Microsoft.UI.Xaml.Controls.Button m_scrollLeft;
+            private Microsoft.UI.Xaml.Controls.Button m_scrollRight;
         }
 
     }

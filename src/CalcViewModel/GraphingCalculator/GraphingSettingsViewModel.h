@@ -7,7 +7,7 @@
 namespace CalculatorApp::ViewModel
 {
 #pragma once
-    [Windows::UI::Xaml::Data::Bindable] public ref class GraphingSettingsViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+    [Microsoft::UI::Xaml::Data::Bindable] public ref class GraphingSettingsViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
     {
     public:
         OBSERVABLE_OBJECT();

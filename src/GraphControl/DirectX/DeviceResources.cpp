@@ -12,7 +12,7 @@ using namespace std;
 using namespace Windows::Foundation;
 using namespace Windows::Graphics::Display;
 using namespace Windows::UI::Core;
-using namespace Windows::UI::Xaml::Controls;
+using namespace Microsoft::UI::Xaml::Controls;
 using namespace Platform;
 
 namespace DisplayMetrics
@@ -322,18 +322,18 @@ namespace GraphControl::DX
 
             // Associate swap chain with SwapChainPanel
             // UI changes will need to be dispatched back to the UI thread
-            m_swapChainPanel->Dispatcher->RunAsync(CoreDispatcherPriority::High, ref new DispatchedHandler([=]()
-            {
-                // Get backing native interface for SwapChainPanel
-                ComPtr<ISwapChainPanelNative> panelNative;
-                DX::ThrowIfFailed(
-                    reinterpret_cast<IUnknown*>(m_swapChainPanel)->QueryInterface(IID_PPV_ARGS(&panelNative))
-                );
+            //m_swapChainPanel->Dispatcher->RunAsync(CoreDispatcherPriority::High, ref new DispatchedHandler([=]()
+            //{
+            //    // Get backing native interface for SwapChainPanel
+            //    ComPtr<ISwapChainPanelNative> panelNative;
+            //    DX::ThrowIfFailed(
+            //        reinterpret_cast<IUnknown*>(m_swapChainPanel)->QueryInterface(IID_PPV_ARGS(&panelNative))
+            //    );
 
-                DX::ThrowIfFailed(
-                    panelNative->SetSwapChain(m_swapChain.Get())
-                );
-            }, CallbackContext::Any));
+            //    DX::ThrowIfFailed(
+            //        panelNative->SetSwapChain(m_swapChain.Get())
+            //    );
+            //}, CallbackContext::Any));
 
             // Ensure that DXGI does not queue more than one frame at a time. This both reduces latency and
             // ensures that the application will only render after each VSync, minimizing power consumption.
@@ -413,6 +413,7 @@ namespace GraphControl::DX
             m_d3dRenderTargetSize.Width,
             m_d3dRenderTargetSize.Height
         );
+        //hello
 
         m_d3dContext->RSSetViewports(1, &m_screenViewport);
 
@@ -484,18 +485,18 @@ namespace GraphControl::DX
     // This method is called when the XAML control is created (or re-created).
     void DeviceResources::SetSwapChainPanel(SwapChainPanel^ panel)
     {
-        DisplayInformation^ currentDisplayInformation = DisplayInformation::GetForCurrentView();
+        //DisplayInformation^ currentDisplayInformation = DisplayInformation::GetForCurrentView();
 
         m_swapChainPanel = panel;
         m_logicalSize = Windows::Foundation::Size(static_cast<float>(panel->ActualWidth), static_cast<float>(panel->ActualHeight));
-        m_nativeOrientation = currentDisplayInformation->NativeOrientation;
-        m_currentOrientation = currentDisplayInformation->CurrentOrientation;
+        //m_nativeOrientation = currentDisplayInformation->NativeOrientation;
+        //m_currentOrientation = currentDisplayInformation->CurrentOrientation;
         m_compositionScaleX = panel->CompositionScaleX;
         m_compositionScaleY = panel->CompositionScaleY;
-        m_dpi = currentDisplayInformation->LogicalDpi;
+        //m_dpi = currentDisplayInformation->LogicalDpi;
         m_d2dContext->SetDpi(m_dpi, m_dpi);
 
-        CreateWindowSizeDependentResources();
+        //CreateWindowSizeDependentResources();
     }
 
     // This method is called in the event handler for the SizeChanged event.

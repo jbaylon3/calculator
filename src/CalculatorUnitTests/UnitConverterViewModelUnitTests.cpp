@@ -17,8 +17,8 @@ using namespace std;
 using namespace Utils;
 using namespace Windows::ApplicationModel::Resources;
 using namespace Windows::Foundation::Collections;
-using namespace Windows::UI::Xaml;
-using namespace Windows::UI::Xaml::Data;
+using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Data;
 
 namespace UCM = UnitConversionManager;
 namespace VM = CalculatorApp::ViewModel;

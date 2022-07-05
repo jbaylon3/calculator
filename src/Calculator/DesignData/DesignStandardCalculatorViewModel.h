@@ -10,7 +10,7 @@ namespace Numbers
 #ifdef _DEBUG
 
     public
-        ref class MemorySlot sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        ref class MemorySlot sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         public:
             MemorySlot(int slotPosition, Platform::String ^ value)
@@ -33,7 +33,7 @@ namespace Numbers
         // to ensure that the design experience is correct.
         // This class's code is run in the designer process so the less code it has the better.
     public
-        ref class StandardCalculatorViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        ref class StandardCalculatorViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         public:
             StandardCalculatorViewModel()

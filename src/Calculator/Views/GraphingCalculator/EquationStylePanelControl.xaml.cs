@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.UI;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -34,7 +34,7 @@ namespace CalculatorApp
 
         // Using a DependencyProperty as the backing store for SelectedColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedColorProperty =
-            DependencyProperty.Register(nameof(SelectedColor), typeof(Windows.UI.Color), typeof(EquationStylePanelControl), new PropertyMetadata(Windows.UI.Colors.Black, (sender, args) =>
+            DependencyProperty.Register(nameof(SelectedColor), typeof(Windows.UI.Color), typeof(EquationStylePanelControl), new PropertyMetadata(Microsoft.UI.Colors.Black, (sender, args) =>
             {
                 var self = (EquationStylePanelControl)sender;
                 self.OnSelectedColorPropertyChanged((Windows.UI.Color)args.OldValue, (Windows.UI.Color)args.NewValue);
@@ -64,15 +64,15 @@ namespace CalculatorApp
         public static readonly DependencyProperty SelectedColorIndexProperty =
             DependencyProperty.Register(nameof(SelectedColorIndex), typeof(int), typeof(EquationStylePanelControl), new PropertyMetadata(default(int)));
 
-        public IList<Windows.UI.Xaml.Media.SolidColorBrush> AvailableColors
+        public IList<Microsoft.UI.Xaml.Media.SolidColorBrush> AvailableColors
         {
-            get { return (IList<Windows.UI.Xaml.Media.SolidColorBrush>)GetValue(AvailableColorsProperty); }
+            get { return (IList<Microsoft.UI.Xaml.Media.SolidColorBrush>)GetValue(AvailableColorsProperty); }
             set { SetValue(AvailableColorsProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for AvailableColors.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty AvailableColorsProperty =
-            DependencyProperty.Register(nameof(AvailableColors), typeof(IList<Windows.UI.Xaml.Media.SolidColorBrush>), typeof(EquationStylePanelControl), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(AvailableColors), typeof(IList<Microsoft.UI.Xaml.Media.SolidColorBrush>), typeof(EquationStylePanelControl), new PropertyMetadata(null));
 
         public bool EnableLineStylePicker
         {
@@ -84,7 +84,7 @@ namespace CalculatorApp
         public static readonly DependencyProperty EnableLineStylePickerProperty =
             DependencyProperty.Register(nameof(EnableLineStylePicker), typeof(bool), typeof(EquationStylePanelControl), new PropertyMetadata(default(bool)));
 
-        public static Windows.UI.Xaml.Media.DoubleCollection GetLinePattern(object line)
+        public static Microsoft.UI.Xaml.Media.DoubleCollection GetLinePattern(object line)
         {
             var lineStyle = ((EquationLineStyle?)line).Value;
 
@@ -122,7 +122,7 @@ namespace CalculatorApp
             }
         }
 
-        public static string GetColorAutomationName(Windows.UI.Xaml.Media.Brush brush)
+        public static string GetColorAutomationName(Microsoft.UI.Xaml.Media.Brush brush)
         {
             var resourceLoader = AppResourceProvider.GetInstance();
             var color = ((SolidColorBrush)brush);
@@ -229,7 +229,7 @@ namespace CalculatorApp
                 var brush = (e.AddedItems[0] as SolidColorBrush);
                 if (brush == null)
                 {
-                    SelectedColor = Colors.Black;
+                    SelectedColor = Microsoft.UI.Colors.Black;
                 }
                 else
                 {

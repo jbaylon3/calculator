@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 namespace CalculatorApp
 {
@@ -23,7 +23,7 @@ namespace CalculatorApp
             return (m_frame.Content as Page);
         }
 
-        public void SetNewFrame(Windows.UI.Xaml.Controls.Frame frame)
+        public void SetNewFrame(Microsoft.UI.Xaml.Controls.Frame frame)
         {
             Debug.Assert(frame.BackStackDepth == 0);
             m_frame = frame;
@@ -33,7 +33,7 @@ namespace CalculatorApp
         // !createdByUs means the main window
         internal static WindowFrameService CreateNewWindowFrameService(Frame viewFrame, bool createdByUs, WeakReference parent)
         {
-            Debug.Assert(CoreWindow.GetForCurrentThread() != null);
+            //Debug.Assert(CoreWindow.GetForCurrentThread() != null);
             var frameService = new WindowFrameService(viewFrame, parent);
             frameService.InitializeFrameService(createdByUs);
             return frameService;
@@ -60,14 +60,14 @@ namespace CalculatorApp
             _ = m_coreDispatcher.RunAsync(CoreDispatcherPriority.Low, new DispatchedHandler(() =>
             {
                 KeyboardShortcutManager.OnWindowClosed(this.m_viewId);
-                Window.Current.Content = null;
+                App.Window.Content = null;
                 this.InvokeWindowClosingHandlers();
                 // This is to ensure InvokeWindowClosingHandlers is be done before RemoveWindowFromMap
                 // If InvokeWindowClosingHandlers throws any exception we want it to crash the application
                 // so we are OK not setting closingHandlersCompletedEvent in that case
                 tsource.SetResult(new object());
                 this.m_coreDispatcher.StopProcessEvents();
-                Window.Current.Close();
+                App.Window.Close();
             }));
 
             return tsource.Task;
@@ -148,7 +148,7 @@ namespace CalculatorApp
             if (m_parent.IsAlive)
             {
                 var parent = m_parent.Target as App;
-                parent.RemoveWindow(this);
+                //parent.RemoveWindow(this);
             }
         }
 
@@ -157,7 +157,7 @@ namespace CalculatorApp
             if (m_parent.IsAlive)
             {
                 var parent = m_parent.Target as App;
-                parent.RemoveSecondaryWindow(this);
+                //parent.RemoveSecondaryWindow(this);
             }
         }
 
@@ -177,7 +177,7 @@ namespace CalculatorApp
 
         private Windows.UI.Core.CoreWindow m_currentWindow;
         private Windows.UI.Core.CoreDispatcher m_coreDispatcher;
-        private Windows.UI.Xaml.Controls.Frame m_frame;
+        private Microsoft.UI.Xaml.Controls.Frame m_frame;
         private int m_viewId;
         private WeakReference m_parent;
 

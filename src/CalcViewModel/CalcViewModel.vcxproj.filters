@@ -208,5 +208,9 @@
     <None Include="DataLoaders\DefaultFromToCurrency.json">
       <Filter>DataLoaders</Filter>
     </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CalcViewModel.rc" />
   </ItemGroup>
 </Project>

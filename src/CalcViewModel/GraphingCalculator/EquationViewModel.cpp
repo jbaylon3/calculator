@@ -13,7 +13,7 @@ using namespace Platform::Collections;
 using namespace std;
 using namespace Windows::ApplicationModel::Resources;
 using namespace Windows::UI;
-using namespace Windows::UI::Xaml;
+using namespace Microsoft::UI::Xaml;
 using namespace Windows::Foundation::Collections;
 using namespace GraphControl;
 
@@ -37,7 +37,7 @@ namespace CalculatorApp::ViewModel
         : m_AnalysisErrorVisible{ false }
         , m_FunctionLabelIndex{ functionLabelIndex }
         , m_KeyGraphFeaturesItems{ ref new Vector<KeyGraphFeaturesItem ^>() }
-        , m_resourceLoader{ ::ResourceLoader::GetForCurrentView() }
+        //, m_resourceLoader{ ::ResourceLoader::GetForCurrentView() }
     {
         if (equation == nullptr)
         {

@@ -25,15 +25,15 @@ using Windows.System;
 using Windows.UI.Core;
 using Windows.UI.Input;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation;
-using Windows.UI.Xaml.Automation.Peers;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.UI.Popups;
 
 namespace CalculatorApp
@@ -45,23 +45,23 @@ namespace CalculatorApp
             InitializeComponent();
 
             m_accessibilitySettings = new AccessibilitySettings();
-            DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
+            //DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
 
             // Register the current control as a share source.
-            dataTransferManager.DataRequested += OnDataRequested;
+            //dataTransferManager.DataRequested += OnDataRequested;
 
             // Request notifications when we should be showing the trace values
-            GraphingControl.TracingChangedEvent += OnShowTracePopupChanged;
+            //GraphingControl.TracingChangedEvent += OnShowTracePopupChanged;
 
             // And when the actual trace value changes
-            GraphingControl.TracingValueChangedEvent += OnTracePointChanged;
+            //GraphingControl.TracingValueChangedEvent += OnTracePointChanged;
 
             // Update where the pointer value is (ie: where the user cursor from keyboard inputs moves the point to)
-            GraphingControl.PointerValueChangedEvent += OnPointerPointChanged;
+            //GraphingControl.PointerValueChangedEvent += OnPointerPointChanged;
 
-            GraphingControl.Loaded += OnGraphingCalculatorLoaded;
+            //GraphingControl.Loaded += OnGraphingCalculatorLoaded;
 
-            GraphingControl.UseCommaDecimalSeperator = LocalizationSettings.GetInstance().GetDecimalSeparator() == ',';
+            //GraphingControl.UseCommaDecimalSeperator = LocalizationSettings.GetInstance().GetDecimalSeparator() == ',';
 
             // OemMinus and OemAdd aren't declared in the VirtualKey enum, we can't add this accelerator XAML-side
             var virtualKey = new KeyboardAccelerator();
@@ -74,12 +74,12 @@ namespace CalculatorApp
             virtualKey.Modifiers = VirtualKeyModifiers.Control;
             ZoomInButton.KeyboardAccelerators.Add(virtualKey);
 
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.Xaml.Media.ThemeShadow"))
+            /*if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Microsoft.UI.Xaml.Media.ThemeShadow"))
             {
                 SharedShadow.Receivers.Add(GraphingControl);
-            }
+            }*/
 
-            m_accessibilitySettings.HighContrastChanged += OnHighContrastChanged;
+            //m_accessibilitySettings.HighContrastChanged += OnHighContrastChanged;
 
             m_uiSettings = new UISettings();
             m_uiSettings.ColorValuesChanged += OnColorValuesChanged;
@@ -236,7 +236,7 @@ namespace CalculatorApp
             }
         }
 
-        public static Windows.UI.Xaml.Visibility ManageEditVariablesButtonVisibility(uint numberOfVariables)
+        public static Microsoft.UI.Xaml.Visibility ManageEditVariablesButtonVisibility(uint numberOfVariables)
         {
             return numberOfVariables == 0 ? Visibility.Collapsed : Visibility.Visible;
         }
@@ -277,7 +277,7 @@ namespace CalculatorApp
 
         private void OnVariableChanged(object sender, VariableChangedEventArgs args)
         {
-            GraphingControl.SetVariable(args.variableName, args.newValue);
+            //GraphingControl.SetVariable(args.variableName, args.newValue);
         }
 
         private void OnEquationsVectorChanged(IObservableVector<EquationViewModel> sender, IVectorChangedEventArgs e)
@@ -289,7 +289,7 @@ namespace CalculatorApp
             }
 
             // Do not plot the graph if we are removing an empty equation, just remove it
-            if (e.CollectionChange == CollectionChange.ItemRemoved)
+            /*if (e.CollectionChange == CollectionChange.ItemRemoved)
             {
                 var itemToRemove = GraphingControl.Equations[(int)e.Index];
 
@@ -304,7 +304,7 @@ namespace CalculatorApp
 
                     return;
                 }
-            }
+            }*/
 
             // Do not plot the graph if we are adding an empty equation, just add it
             if (e.CollectionChange == CollectionChange.ItemInserted)
@@ -313,32 +313,32 @@ namespace CalculatorApp
 
                 if (string.IsNullOrEmpty(itemToAdd.Expression))
                 {
-                    GraphingControl.Equations.Add(itemToAdd.GraphEquation);
+                    //GraphingControl.Equations.Add(itemToAdd.GraphEquation);
 
                     return;
                 }
             }
 
             // We are either adding or removing a valid equation, or resetting the collection. We will need to plot the graph
-            GraphingControl.Equations.Clear();
+            /*GraphingControl.Equations.Clear();
 
             foreach (var equationViewModel in ViewModel.Equations)
             {
                 GraphingControl.Equations.Add(equationViewModel.GraphEquation);
             }
 
-            GraphingControl.PlotGraph(false);
+            GraphingControl.PlotGraph(false);*/
         }
 
         private void OnZoomInCommand(object parameter)
         {
-            GraphingControl.ZoomFromCenter(zoomInScale);
+           // GraphingControl.ZoomFromCenter(zoomInScale);
             CalculatorApp.ViewModel.Common.TraceLogger.GetInstance().LogGraphButtonClicked(GraphButton.ZoomIn, GraphButtonValue.None);
         }
 
         private void OnZoomOutCommand(object parameter)
         {
-            GraphingControl.ZoomFromCenter(zoomOutScale);
+            //GraphingControl.ZoomFromCenter(zoomOutScale);
             CalculatorApp.ViewModel.Common.TraceLogger.GetInstance().LogGraphButtonClicked(GraphButton.ZoomOut, GraphButtonValue.None);
         }
 
@@ -347,7 +347,9 @@ namespace CalculatorApp
             // Ask the OS to start a share action.
             try
             {
-                DataTransferManager.ShowShareUI();
+
+                Windows.ApplicationModel.DataTransfer.DataTransferManager.As<UWPToWinAppSDKUpgradeHelpers.IDataTransferManagerInterop>().ShowShareUIForWindow(App.WindowHandle)
+;
                 CalculatorApp.ViewModel.Common.TraceLogger.GetInstance().LogGraphButtonClicked(GraphButton.Share, GraphButtonValue.None);
             }
             catch (System.Runtime.InteropServices.COMException ex)
@@ -377,7 +379,7 @@ namespace CalculatorApp
         private void OnTracePointChanged(double xPointValue, double yPointValue)
         {
             double xAxisMin, xAxisMax, yAxisMin, yAxisMax;
-            GraphingControl.GetDisplayRanges(out xAxisMin, out xAxisMax, out yAxisMin, out yAxisMax);
+            //GraphingControl.GetDisplayRanges(out xAxisMin, out xAxisMax, out yAxisMin, out yAxisMax);
 
             TraceValue.Text = "(" + xPointValue.ToString("R") + ", " + yPointValue.ToString("N15") + ")";
 
@@ -434,7 +436,7 @@ namespace CalculatorApp
                         var color = equation.LineColor;
                         hasEquations = true;
 
-                        expression = GraphingControl.ConvertToLinear(expression);
+                        //expression = GraphingControl.ConvertToLinear(expression);
 
                         string equationColorHtml;
                         equationColorHtml = "color:rgb(" + color.R.ToString() + "," + color.G.ToString() + "," + color.B.ToString() + ");";
@@ -492,13 +494,13 @@ namespace CalculatorApp
 
                 requestData.SetHtmlFormat(html);
 
-                var bitmapStream = GraphingControl.GetGraphBitmapStream();
+                /*var bitmapStream = GraphingControl.GetGraphBitmapStream();
 
                 requestData.ResourceMap.Add("graph.png", bitmapStream);
                 requestData.SetBitmap(bitmapStream);
 
                 // Set the thumbnail image (in case the share target can't handle HTML)
-                requestData.Properties.Thumbnail = bitmapStream;
+                requestData.Properties.Thumbnail = bitmapStream;*/
             }
             catch (Exception ex)
             {
@@ -510,7 +512,7 @@ namespace CalculatorApp
         private void GraphingControl_LostFocus(object sender, RoutedEventArgs e)
         {
             // If the graph is losing focus while we are in active tracing we need to turn it off so we don't try to eat keys in other controls.
-            if (GraphingControl.ActiveTracing)
+            /*if (GraphingControl.ActiveTracing)
             {
                 if (ActiveTracing.Equals(FocusManager.GetFocusedElement()) && ActiveTracing.IsPressed)
                 {
@@ -521,7 +523,8 @@ namespace CalculatorApp
                     GraphingControl.ActiveTracing = false;
                     OnShowTracePopupChanged(false);
                 }
-            }
+            }*/
+            return;
         }
 
         private void GraphingControl_LosingFocus(UIElement sender, LosingFocusEventArgs args)
@@ -538,7 +541,8 @@ namespace CalculatorApp
 
         private void GraphingControl_VariablesUpdated(object sender, object args)
         {
-            m_viewModel.UpdateVariables(GraphingControl.Variables);
+            //m_viewModel.UpdateVariables(GraphingControl.Variables);
+            return;
         }
 
         private void GraphingControl_GraphViewChangedEvent(object sender, GraphViewChangedReason reason)
@@ -555,11 +559,11 @@ namespace CalculatorApp
             UpdateGraphAutomationName();
 
             var announcement = CalculatorAnnouncement.GetGraphViewChangedAnnouncement(GraphControlAutomationName);
-            var peer = FrameworkElementAutomationPeer.FromElement(GraphingControl);
+            /*var peer = FrameworkElementAutomationPeer.FromElement(GraphingControl);
             if (peer != null)
             {
                 peer.RaiseNotificationEvent(announcement.Kind, announcement.Processing, announcement.Announcement, announcement.ActivityId);
-            }
+            }*/
         }
 
         private void GraphingControl_GraphPlottedEvent(object sender, RoutedEventArgs e)
@@ -572,8 +576,8 @@ namespace CalculatorApp
             ViewModel.SetSelectedEquation(equationViewModel);
             if (equationViewModel != null)
             {
-                var keyGraphFeatureInfo = GraphingControl.AnalyzeEquation(equationViewModel.GraphEquation);
-                equationViewModel.PopulateKeyGraphFeatures(keyGraphFeatureInfo);
+                //var keyGraphFeatureInfo = GraphingControl.AnalyzeEquation(equationViewModel.GraphEquation);
+                //equationViewModel.PopulateKeyGraphFeatures(keyGraphFeatureInfo);
                 IsKeyGraphFeaturesVisible = true;
                 equationViewModel.GraphEquation.IsSelected = true;
             }
@@ -592,7 +596,7 @@ namespace CalculatorApp
 
         private void PositionGraphPopup()
         {
-            if (GraphingControl.TraceLocation.X + 15 + TraceValuePopup.ActualWidth >= GraphingControl.ActualWidth)
+            /*if (GraphingControl.TraceLocation.X + 15 + TraceValuePopup.ActualWidth >= GraphingControl.ActualWidth)
             {
                 TraceValuePopupTransform.X = (int)GraphingControl.TraceLocation.X - 15 - TraceValuePopup.ActualWidth;
             }
@@ -608,7 +612,8 @@ namespace CalculatorApp
             else
             {
                 TraceValuePopupTransform.Y = (int)GraphingControl.TraceLocation.Y;
-            }
+            }*/
+            return;
         }
 
         private void ActiveTracing_Checked(object sender, RoutedEventArgs e)
@@ -629,9 +634,9 @@ namespace CalculatorApp
                 m_cursorShadowInitialized = true;
             }
 
-            _ = FocusManager.TryFocusAsync(GraphingControl, FocusState.Programmatic);
+            //_ = FocusManager.TryFocusAsync(GraphingControl, FocusState.Programmatic);
 
-            Window.Current.CoreWindow.KeyUp += ActiveTracing_KeyUp;
+            App.Window.CoreWindow.KeyUp += ActiveTracing_KeyUp;
 
             KeyboardShortcutManager.IgnoreEscape(false);
 
@@ -642,7 +647,7 @@ namespace CalculatorApp
         private void ActiveTracing_Unchecked(object sender, RoutedEventArgs e)
         {
             ActiveTracing.PointerCaptureLost -= ActiveTracing_PointerCaptureLost;
-            Window.Current.CoreWindow.KeyUp -= ActiveTracing_KeyUp;
+            App.Window.CoreWindow.KeyUp -= ActiveTracing_KeyUp;
             KeyboardShortcutManager.HonorEscape();
 
             TracePointer.Visibility = Visibility.Collapsed;
@@ -653,7 +658,7 @@ namespace CalculatorApp
         {
             if (args.VirtualKey == VirtualKey.Escape)
             {
-                GraphingControl.ActiveTracing = false;
+                //GraphingControl.ActiveTracing = false;
                 ActiveTracing.Focus(FocusState.Programmatic);
                 args.Handled = true;
             }
@@ -663,11 +668,11 @@ namespace CalculatorApp
         {
             ActiveTracing.PointerCaptureLost -= ActiveTracing_PointerCaptureLost;
 
-            if (GraphingControl.ActiveTracing)
+            /*if (GraphingControl.ActiveTracing)
             {
                 GraphingControl.ActiveTracing = false;
                 OnShowTracePopupChanged(false);
-            }
+            }*/
         }
 
         private void GraphSettingsButton_Click(object sender, RoutedEventArgs e)
@@ -707,7 +712,7 @@ namespace CalculatorApp
                 m_graphFlyout.Content = m_graphSettings;
             }
 
-            m_graphSettings.SetGrapher(this.GraphingControl);
+            //m_graphSettings.SetGrapher(this.GraphingControl);
             m_graphSettings.IsMatchAppTheme = IsMatchAppTheme;
 
             var options = new FlyoutShowOptions();
@@ -717,7 +722,7 @@ namespace CalculatorApp
 
         private void AddTracePointerShadow()
         {
-            var compositor = Windows.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(CursorPath).Compositor;
+            var compositor = Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(CursorPath).Compositor;
             var dropShadow = compositor.CreateDropShadow();
             dropShadow.BlurRadius = 6;
             dropShadow.Opacity = 0.33f;
@@ -727,7 +732,7 @@ namespace CalculatorApp
             var shadowSpriteVisual = compositor.CreateSpriteVisual();
             shadowSpriteVisual.Size = new System.Numerics.Vector2(18, 18);
             shadowSpriteVisual.Shadow = dropShadow;
-            Windows.UI.Xaml.Hosting.ElementCompositionPreview.SetElementChildVisual(CursorShadow, shadowSpriteVisual);
+            Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.SetElementChildVisual(CursorShadow, shadowSpriteVisual);
         }
 
         private void UpdateGraphAutomationName()
@@ -744,7 +749,7 @@ namespace CalculatorApp
                 }
             }
 
-            GraphingControl.GetDisplayRanges(out xAxisMin, out xAxisMax, out yAxisMin, out yAxisMax);
+            /*GraphingControl.GetDisplayRanges(out xAxisMin, out xAxisMax, out yAxisMin, out yAxisMax);
 
             GraphControlAutomationName = LocalizationStringUtil.GetLocalizedString(
                 AppResourceProvider.GetInstance().GetResourceString("graphAutomationName"),
@@ -752,7 +757,7 @@ namespace CalculatorApp
                 xAxisMax.ToString(),
                 yAxisMin.ToString(),
                 yAxisMax.ToString(),
-                numEquations.ToString());
+                numEquations.ToString());*/
         }
 
         private void OnColorValuesChanged(UISettings sender, object args)
@@ -813,7 +818,7 @@ namespace CalculatorApp
         private Windows.UI.ViewManagement.AccessibilitySettings m_accessibilitySettings;
         private bool m_cursorShadowInitialized;
         private Windows.UI.ViewManagement.UISettings m_uiSettings;
-        private Windows.UI.Xaml.Controls.Flyout m_graphFlyout;
+        private Microsoft.UI.Xaml.Controls.Flyout m_graphFlyout;
         private CalculatorApp.GraphingSettings m_graphSettings;
 
         private void Canvas_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -838,10 +843,11 @@ namespace CalculatorApp
 
         private void OnEquationFormatRequested(object sender, MathRichEditBoxFormatRequest e)
         {
-            if (!string.IsNullOrEmpty(e.OriginalText))
+            /*if (!string.IsNullOrEmpty(e.OriginalText))
             {
                 e.FormattedText = GraphingControl.FormatMathML(e.OriginalText);
-            }
+            }*/
+            return;
         }
 
         private void GraphMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
@@ -849,8 +855,8 @@ namespace CalculatorApp
             var dataPackage = new DataPackage();
             dataPackage.RequestedOperation = DataPackageOperation.Copy;
 
-            var bitmapStream = GraphingControl.GetGraphBitmapStream();
-            dataPackage.SetBitmap(bitmapStream);
+            //var bitmapStream = GraphingControl.GetGraphBitmapStream();
+            //dataPackage.SetBitmap(bitmapStream);
             Clipboard.SetContent(dataPackage);
         }
 
@@ -871,7 +877,7 @@ namespace CalculatorApp
             {
                 announcementText = AppResourceProvider.GetInstance().GetResourceString("GraphViewAutomaticBestFitAnnouncement");
                 announcementText += AppResourceProvider.GetInstance().GetResourceString("GridResetAnnouncement");
-                GraphingControl.ResetGrid();
+                //GraphingControl.ResetGrid();
             }
 
             var announcement = CalculatorAnnouncement.GetGraphViewBestFitChangedAnnouncement(announcementText);
@@ -888,12 +894,20 @@ namespace CalculatorApp
             var errDialog = new ContentDialog();
             errDialog.Content = resourceLoader.GetString("ShareActionErrorMessage");
             errDialog.CloseButtonText = resourceLoader.GetString("ShareActionErrorOk");
-            _ = errDialog.ShowAsync();
+            _ = this.SetContentDialogRoot(errDialog).ShowAsync();
         }
+                    private ContentDialog SetContentDialogRoot(ContentDialog contentDialog)
+                    {
+                        if (Windows.Foundation.Metadata.ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 8))
+                        {
+                            contentDialog.XamlRoot = this.Content.XamlRoot;
+                        }
+                        return contentDialog;
+                    }
 
         private void OnGraphingCalculatorLoaded(object sender, RoutedEventArgs e)
         {
-            GraphingControl.Loaded -= OnGraphingCalculatorLoaded;
+            //GraphingControl.Loaded -= OnGraphingCalculatorLoaded;
 
             // The control needs to be loaded, else the control will override GridLinesColor and ignore the value passed
             UpdateGraphTheme();

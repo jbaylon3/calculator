@@ -22,7 +22,7 @@ namespace CalculatorApp
     public
         delegate void HistoryItemClickedHandler(CalculatorApp::ViewModel::HistoryItemViewModel ^ e);
 
-        [Windows::UI::Xaml::Data::Bindable] public ref class HistoryViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        [Microsoft::UI::Xaml::Data::Bindable] public ref class HistoryViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         public:
             OBSERVABLE_OBJECT();

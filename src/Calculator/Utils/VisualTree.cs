@@ -1,9 +1,9 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Media;
 
 // Light C++/CX port of Microsoft.Toolkit.Uwp.UI.Extensions.VisualTree from the Windows Community toolkit
 // Original version here:
@@ -17,7 +17,7 @@ namespace Calculator.Utils
     sealed class VisualTree
     {
         /// <summary>
-        /// Find descendant <see cref="Windows.UI.Xaml.FrameworkElement ^"/> control using its name.
+        /// Find descendant <see cref="Microsoft.UI.Xaml.FrameworkElement ^"/> control using its name.
         /// </summary>
         /// <param name="element">Parent element.</param>
         /// <param name="name">Name of the control to find</param>
@@ -80,7 +80,7 @@ namespace Calculator.Utils
         }
 
         /// <summary>
-        /// Find visual ascendant <see cref="Windows.UI.Xaml.FrameworkElement ^"/> control using its name.
+        /// Find visual ascendant <see cref="Microsoft.UI.Xaml.FrameworkElement ^"/> control using its name.
         /// </summary>
         /// <param name="element">Parent element.</param>
         /// <param name="name">Name of the control to find</param>

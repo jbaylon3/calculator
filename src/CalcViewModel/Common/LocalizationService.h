@@ -31,11 +31,11 @@ namespace CalculatorApp::ViewModel
             DEPENDENCY_PROPERTY_ATTACHED_WITH_CALLBACK(double, FontSize);
 
             static LocalizationService ^ GetInstance();
-            Windows::UI::Xaml::FlowDirection GetFlowDirection();
+            Microsoft::UI::Xaml::FlowDirection GetFlowDirection();
             bool IsRtlLayout();
             bool GetOverrideFontApiValues();
             Platform::String ^ GetLanguage();
-            Windows::UI::Xaml::Media::FontFamily ^ GetLanguageFontFamilyForType(LanguageFontType fontType);
+            Microsoft::UI::Xaml::Media::FontFamily ^ GetLanguageFontFamilyForType(LanguageFontType fontType);
             Platform::String ^ GetFontFamilyOverride();
             Windows::UI::Text::FontWeight GetFontWeightOverride();
             double GetFontScaleFactorOverride(LanguageFontType fontType);
@@ -74,14 +74,14 @@ namespace CalculatorApp::ViewModel
             Windows::Foundation::Collections::IIterable<Platform::String ^> ^ GetLanguageIdentifiers() const;
 
             // Attached property callbacks
-            static void OnFontTypePropertyChanged(Windows::UI::Xaml::DependencyObject ^ target, LanguageFontType oldValue, LanguageFontType newValue);
+            static void OnFontTypePropertyChanged(Microsoft::UI::Xaml::DependencyObject ^ target, LanguageFontType oldValue, LanguageFontType newValue);
             static void OnFontWeightPropertyChanged(
-                Windows::UI::Xaml::DependencyObject ^ target,
+                Microsoft::UI::Xaml::DependencyObject ^ target,
                 Windows::UI::Text::FontWeight oldValue,
                 Windows::UI::Text::FontWeight newValue);
-            static void OnFontSizePropertyChanged(Windows::UI::Xaml::DependencyObject ^ target, double oldValue, double newValue);
+            static void OnFontSizePropertyChanged(Microsoft::UI::Xaml::DependencyObject ^ target, double oldValue, double newValue);
 
-            static void UpdateFontFamilyAndSize(Windows::UI::Xaml::DependencyObject ^ target);
+            static void UpdateFontFamilyAndSize(Microsoft::UI::Xaml::DependencyObject ^ target);
 
             static std::unordered_map<std::wstring, std::wstring> GetTokenToReadableNameMap();
 
@@ -89,7 +89,7 @@ namespace CalculatorApp::ViewModel
 
             Windows::Globalization::Fonts::LanguageFontGroup ^ m_fontGroup;
             Platform::String ^ m_language;
-            Windows::UI::Xaml::FlowDirection m_flowDirection;
+            Microsoft::UI::Xaml::FlowDirection m_flowDirection;
             bool m_overrideFontApiValues;
             Platform::String ^ m_fontFamilyOverride;
             bool m_isLanguageOverrided;

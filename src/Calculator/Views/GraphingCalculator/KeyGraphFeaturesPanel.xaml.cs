@@ -9,8 +9,8 @@ using CalculatorApp;
 using CalculatorApp.ViewModel;
 
 using Windows.UI;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using System.ComponentModel;
 
 namespace CalculatorApp
@@ -44,12 +44,12 @@ namespace CalculatorApp
             }
         }
 
-        public event Windows.UI.Xaml.RoutedEventHandler KeyGraphFeaturesClosed;
+        public event Microsoft.UI.Xaml.RoutedEventHandler KeyGraphFeaturesClosed;
 
-        public static Windows.UI.Xaml.Media.SolidColorBrush
+        public static Microsoft.UI.Xaml.Media.SolidColorBrush
                      ToSolidColorBrush(Windows.UI.Color color)
         {
-            return new Windows.UI.Xaml.Media.SolidColorBrush(color);
+            return new Microsoft.UI.Xaml.Media.SolidColorBrush(color);
         }
 
         private void KeyGraphFeaturesPanel_Loaded(object sender, RoutedEventArgs e)

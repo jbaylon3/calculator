@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.System;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Automation;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -68,12 +68,12 @@ namespace CalculatorApp
             PasteMenuItem.Text = resLoader.GetResourceString("pasteMenuItem");
         }
 
-        public Windows.UI.Xaml.HorizontalAlignment FlowDirectionHorizontalAlignment
+        public Microsoft.UI.Xaml.HorizontalAlignment FlowDirectionHorizontalAlignment
         {
             get => this.m_FlowDirectionHorizontalAlignment;
         }
 
-        private Windows.UI.Xaml.HorizontalAlignment m_FlowDirectionHorizontalAlignment = default(HorizontalAlignment);
+        private Microsoft.UI.Xaml.HorizontalAlignment m_FlowDirectionHorizontalAlignment = default(HorizontalAlignment);
 
         public void AnimateConverter()
         {
@@ -88,7 +88,7 @@ namespace CalculatorApp
             get => (CalculatorApp.ViewModel.UnitConverterViewModel)this.DataContext;
         }
 
-        public Windows.UI.Xaml.FlowDirection LayoutDirection
+        public Microsoft.UI.Xaml.FlowDirection LayoutDirection
         {
             get => this.m_layoutDirection;
         }
@@ -106,7 +106,7 @@ namespace CalculatorApp
             }
         }
 
-        private void OnValueKeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        private void OnValueKeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
             if (e.Key == VirtualKey.Space)
             {
@@ -384,28 +384,28 @@ namespace CalculatorApp
             CurrencyLoadingProgressRing.IsActive = false;
         }
 
-        private void SupplementaryResultsPanelInGrid_SizeChanged(object sender, Windows.UI.Xaml.SizeChangedEventArgs e)
+        private void SupplementaryResultsPanelInGrid_SizeChanged(object sender, Microsoft.UI.Xaml.SizeChangedEventArgs e)
         {
             // We add 0.01 to be sure to not create an infinite loop with SizeChanged events cascading due to float approximation
             RowDltrUnits.MinHeight = Math.Max(48.0, e.NewSize.Height + 0.01);
         }
 
-        private void OnVisualStateChanged(object sender, Windows.UI.Xaml.VisualStateChangedEventArgs e)
+        private void OnVisualStateChanged(object sender, Microsoft.UI.Xaml.VisualStateChangedEventArgs e)
         {
             var mode = NavCategoryStates.Deserialize(Model.CurrentCategory.GetModelCategoryId());
             TraceLogger.GetInstance().LogVisualStateChanged(mode, e.NewState.Name, false);
         }
 
         private static Lazy<UISettings> uiSettings = new Lazy<UISettings>(true);
-        private Windows.UI.Xaml.FlowDirection m_layoutDirection = default(FlowDirection);
-        private Windows.UI.Xaml.Controls.MenuFlyout m_resultsFlyout = default(MenuFlyout);
+        private Microsoft.UI.Xaml.FlowDirection m_layoutDirection = default(FlowDirection);
+        private Microsoft.UI.Xaml.Controls.MenuFlyout m_resultsFlyout = default(MenuFlyout);
 
         private string m_chargesMayApplyText = string.Empty;
         private string m_failedToRefreshText = string.Empty;
 
         private bool m_meteredConnectionOverride;
 
-        private Windows.UI.Xaml.DispatcherTimer m_delayTimer;
+        private Microsoft.UI.Xaml.DispatcherTimer m_delayTimer;
     }
 }
 

@@ -10,10 +10,11 @@
       xmlns:selectors="using:CalculatorApp.TemplateSelectors"
       xmlns:vmcom="using:CalculatorApp.ViewModel.Common"
       x:Name="PageRoot"
-      muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
+      
       Loaded="OnPageLoaded"
       mc:Ignorable="d">
-
+    <!--:BackdropMaterial.ApplyToRootOrPageBackground="True"-->
+    
     <Page.Resources>
         <automation:NarratorNotifier x:Name="NarratorNotifier"/>
         <Style x:Name="CalculatorBaseStyle" TargetType="local:Calculator">

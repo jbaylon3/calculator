@@ -18,11 +18,11 @@ using Windows.System;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Input;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Input;
 using Calculator.Utils;
 
 namespace CalculatorApp
@@ -36,7 +36,7 @@ namespace CalculatorApp
             m_accessibilitySettings = new AccessibilitySettings();
             m_equationToFocus = null;
 
-            m_accessibilitySettings.HighContrastChanged += OnHighContrastChanged;
+            //m_accessibilitySettings.HighContrastChanged += OnHighContrastChanged;
             m_isHighContrast = m_accessibilitySettings.HighContrast;
 
             m_uiSettings = new UISettings();
@@ -577,7 +577,7 @@ namespace CalculatorApp
 
             // The slider value updates when the user uses the TextBox to change the variable value.
             // Check the focus state so that we don't trigger the event when the user used the textbox to change the variable value.
-            if (slider.FocusState == Windows.UI.Xaml.FocusState.Unfocused)
+            if (slider.FocusState == Microsoft.UI.Xaml.FocusState.Unfocused)
             {
                 return;
             }

@@ -18,16 +18,16 @@ namespace Numbers
         // This class's code is run in the designer process so the less code it has the better.
 
     public
-        ref class CategoryViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        ref class CategoryViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         public:
             CategoryViewModel(Platform::String ^ name)
                 : m_Name(name)
-                , m_NegateVisibility(Windows::UI::Xaml::Visibility::Collapsed)
+                , m_NegateVisibility(Microsoft::UI::Xaml::Visibility::Collapsed)
             {
             }
 
-            CategoryViewModel(Platform::String ^ name, Windows::UI::Xaml::Visibility negateVisibility)
+            CategoryViewModel(Platform::String ^ name, Microsoft::UI::Xaml::Visibility negateVisibility)
                 : m_Name(name)
                 , m_NegateVisibility(negateVisibility)
             {
@@ -36,11 +36,11 @@ namespace Numbers
             OBSERVABLE_OBJECT();
 
             OBSERVABLE_PROPERTY_RW(Platform::String ^, Name);
-            OBSERVABLE_PROPERTY_RW(Windows::UI::Xaml::Visibility, NegateVisibility);
+            OBSERVABLE_PROPERTY_RW(Microsoft::UI::Xaml::Visibility, NegateVisibility);
         };
 
     public
-        ref class UnitViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        ref class UnitViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         public:
             UnitViewModel(Platform::String ^ unit, Platform::String ^ abbr)
@@ -56,7 +56,7 @@ namespace Numbers
         };
 
     public
-        ref class UnitConverterSupplementaryResultViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        ref class UnitConverterSupplementaryResultViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         public:
             UnitConverterSupplementaryResultViewModel(Platform::String ^ value, Platform::String ^ unit, Platform::String ^ abbr)
@@ -72,7 +72,7 @@ namespace Numbers
         };
 
     public
-        ref class UnitConverterViewModel sealed : public Windows::UI::Xaml::Data::INotifyPropertyChanged
+        ref class UnitConverterViewModel sealed : public Microsoft::UI::Xaml::Data::INotifyPropertyChanged
         {
         public:
             UnitConverterViewModel()
@@ -89,7 +89,7 @@ namespace Numbers
 
                 m_Categories = ref new Platform::Collections::Vector<CategoryViewModel ^>();
                 m_Categories->Append(ref new CategoryViewModel("Volume"));
-                m_Categories->Append(ref new CategoryViewModel("Temperature", Windows::UI::Xaml::Visibility::Visible));
+                m_Categories->Append(ref new CategoryViewModel("Temperature", Microsoft::UI::Xaml::Visibility::Visible));
                 m_CurrentCategory = ref new CategoryViewModel("ÅyTime");
                 m_Categories->Append(m_CurrentCategory);
                 m_Categories->Append(ref new CategoryViewModel("Speed"));
@@ -107,14 +107,14 @@ namespace Numbers
 
             OBSERVABLE_PROPERTY_RW(Platform::String ^, Value1);
             OBSERVABLE_PROPERTY_RW(Platform::String ^, Value2);
-            OBSERVABLE_PROPERTY_R(Windows::UI::Xaml::Interop::IBindableObservableVector ^, Categories);
+            OBSERVABLE_PROPERTY_R(Microsoft::UI::Xaml::Interop::IBindableObservableVector ^, Categories);
             OBSERVABLE_PROPERTY_RW(CategoryViewModel ^, CurrentCategory);
-            OBSERVABLE_PROPERTY_R(Windows::UI::Xaml::Interop::IBindableObservableVector ^, Units);
+            OBSERVABLE_PROPERTY_R(Microsoft::UI::Xaml::Interop::IBindableObservableVector ^, Units);
             OBSERVABLE_PROPERTY_RW(UnitViewModel ^, Unit1);
             OBSERVABLE_PROPERTY_RW(UnitViewModel ^, Unit2);
             OBSERVABLE_PROPERTY_RW(bool, Value1Active);
             OBSERVABLE_PROPERTY_RW(bool, Value2Active);
-            OBSERVABLE_PROPERTY_R(Windows::UI::Xaml::Interop::IBindableObservableVector ^, SupplementaryResults);
+            OBSERVABLE_PROPERTY_R(Microsoft::UI::Xaml::Interop::IBindableObservableVector ^, SupplementaryResults);
         };
 
 #endif

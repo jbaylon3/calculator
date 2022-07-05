@@ -9,7 +9,7 @@ using namespace Platform;
 using namespace Platform::Collections;
 using namespace Windows::Foundation;
 using namespace Windows::Foundation::Collections;
-using namespace Windows::UI::Xaml::Data;
+using namespace Microsoft::UI::Xaml::Data;
 using namespace GraphControl;
 
 namespace CalculatorApp::ViewModel

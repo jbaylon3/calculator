@@ -21,7 +21,7 @@ namespace GraphControl::DX
         virtual void OnDeviceLost();
         virtual void OnDeviceRestored();
 
-        internal : RenderMain(Windows::UI::Xaml::Controls::SwapChainPanel ^ panel);
+        internal : RenderMain(Microsoft::UI::Xaml::Controls::SwapChainPanel ^ panel);
 
         property std::shared_ptr<Graphing::IGraph> Graph
         {
@@ -133,7 +133,7 @@ namespace GraphControl::DX
         bool RunRenderPassInternal();
 
         // Loaded/Unloaded
-        void OnLoaded(Platform::Object ^ sender, Windows::UI::Xaml::RoutedEventArgs ^ e);
+        void OnLoaded(Platform::Object ^ sender, Microsoft::UI::Xaml::RoutedEventArgs ^ e);
 
         // Dependent event registration
         void RegisterEventHandlers();
@@ -148,8 +148,8 @@ namespace GraphControl::DX
         void OnDisplayContentsInvalidated(Windows::Graphics::Display::DisplayInformation ^ sender, Platform::Object ^ args);
 
         // Other event handlers.
-        void OnCompositionScaleChanged(Windows::UI::Xaml::Controls::SwapChainPanel ^ sender, Object ^ args);
-        void OnSizeChanged(Platform::Object ^ sender, Windows::UI::Xaml::SizeChangedEventArgs ^ e);
+        void OnCompositionScaleChanged(Microsoft::UI::Xaml::Controls::SwapChainPanel ^ sender, Object ^ args);
+        void OnSizeChanged(Platform::Object ^ sender, Microsoft::UI::Xaml::SizeChangedEventArgs ^ e);
 
         double GetPrecision(const double maxAxis, const double minAxis);
 
@@ -171,7 +171,7 @@ namespace GraphControl::DX
         float m_backgroundColor[4];
 
         // The SwapChainPanel^ surface.
-        Windows::UI::Xaml::Controls::SwapChainPanel ^ m_swapChainPanel = nullptr;
+        Microsoft::UI::Xaml::Controls::SwapChainPanel ^ m_swapChainPanel = nullptr;
         Windows::Foundation::EventRegistrationToken m_tokenLoaded;
         Windows::Foundation::EventRegistrationToken m_tokenCompositionScaleChanged;
         Windows::Foundation::EventRegistrationToken m_tokenSizeChanged;

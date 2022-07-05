@@ -12,15 +12,15 @@ using CalculatorApp.ViewModel.Common;
 using Windows.Devices.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Windows.UI.Xaml.Automation;
-using Windows.UI.Xaml.Automation.Peers;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Automation.Peers;
 using System.Reflection;
 
 namespace CalculatorApp
@@ -29,7 +29,7 @@ namespace CalculatorApp
     {
         public delegate void SelectedEventHandler(object sender);
 
-        public sealed class CalculationResult : Windows.UI.Xaml.Controls.Control
+        public sealed class CalculationResult : Microsoft.UI.Xaml.Controls.Control
         {
             public CalculationResult()
             {
@@ -489,10 +489,10 @@ namespace CalculatorApp
             // and no events are launched when they scroll again in the same direction
             private const double SCROLL_BUTTONS_APPROXIMATION_RANGE = 4;
 
-            private Windows.UI.Xaml.Controls.ScrollViewer m_textContainer;
-            private Windows.UI.Xaml.Controls.TextBlock m_textBlock;
-            private Windows.UI.Xaml.Controls.HyperlinkButton m_scrollLeft;
-            private Windows.UI.Xaml.Controls.HyperlinkButton m_scrollRight;
+            private Microsoft.UI.Xaml.Controls.ScrollViewer m_textContainer;
+            private Microsoft.UI.Xaml.Controls.TextBlock m_textBlock;
+            private Microsoft.UI.Xaml.Controls.HyperlinkButton m_scrollLeft;
+            private Microsoft.UI.Xaml.Controls.HyperlinkButton m_scrollRight;
             private bool m_isScalingText;
             private bool m_haveCalculatedMax;
         }

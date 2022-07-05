@@ -38,7 +38,7 @@ public
         {
             m_vector->Append(value);
             m_tokens.emplace_back(
-                value->PropertyChanged += ref new Windows::UI::Xaml::Data::PropertyChangedEventHandler(this, &EquationCollection::OnEquationPropertyChanged));
+                value->PropertyChanged += ref new Microsoft::UI::Xaml::Data::PropertyChangedEventHandler(this, &EquationCollection::OnEquationPropertyChanged));
         }
 
         virtual void Clear()
@@ -76,7 +76,7 @@ public
             m_vector->InsertAt(index, value);
             m_tokens.insert(
                 m_tokens.begin() + index,
-                value->PropertyChanged += ref new Windows::UI::Xaml::Data::PropertyChangedEventHandler(this, &EquationCollection::OnEquationPropertyChanged));
+                value->PropertyChanged += ref new Microsoft::UI::Xaml::Data::PropertyChangedEventHandler(this, &EquationCollection::OnEquationPropertyChanged));
         }
 
         virtual void RemoveAt(unsigned int index)
@@ -112,7 +112,7 @@ public
             for (auto i = 0u; i < size; i++)
             {
                 m_tokens[i] = items[i]->PropertyChanged +=
-                    ref new Windows::UI::Xaml::Data::PropertyChangedEventHandler(this, &EquationCollection::OnEquationPropertyChanged);
+                    ref new Microsoft::UI::Xaml::Data::PropertyChangedEventHandler(this, &EquationCollection::OnEquationPropertyChanged);
             }
 
             m_vector->ReplaceAll(items);
@@ -124,7 +124,7 @@ public
 
             m_vector->SetAt(index, value);
             m_tokens[index] = value->PropertyChanged +=
-                ref new Windows::UI::Xaml::Data::PropertyChangedEventHandler(this, &EquationCollection::OnEquationPropertyChanged);
+                ref new Microsoft::UI::Xaml::Data::PropertyChangedEventHandler(this, &EquationCollection::OnEquationPropertyChanged);
         }
 #pragma endregion
 
@@ -154,7 +154,7 @@ public
         event EquationChangedEventHandler ^ EquationLineEnabledChanged;
 
     private:
-        void OnEquationPropertyChanged(Object ^ sender, Windows::UI::Xaml::Data::PropertyChangedEventArgs ^ args)
+        void OnEquationPropertyChanged(Object ^ sender, Microsoft::UI::Xaml::Data::PropertyChangedEventArgs ^ args)
         {
             auto equation = static_cast<Equation ^>(sender);
             auto propertyName = args->PropertyName;

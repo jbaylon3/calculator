@@ -28,8 +28,8 @@ using namespace Windows::Globalization::NumberFormatting;
 using namespace Windows::System;
 using namespace Windows::System::Threading;
 using namespace Windows::System::UserProfile;
-using namespace Windows::UI::Xaml;
-using namespace Windows::UI::Xaml::Automation::Peers;
+using namespace Microsoft::UI::Xaml;
+using namespace Microsoft::UI::Xaml::Automation::Peers;
 using namespace Windows::ApplicationModel::Resources;
 using namespace Windows::Storage;
 
