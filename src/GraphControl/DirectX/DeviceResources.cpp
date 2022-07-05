@@ -413,7 +413,6 @@ namespace GraphControl::DX
             m_d3dRenderTargetSize.Width,
             m_d3dRenderTargetSize.Height
         );
-        //hello
 
         m_d3dContext->RSSetViewports(1, &m_screenViewport);
 
