@@ -5,6 +5,8 @@ using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Windowing;
+using Windows.UI.WindowManagement;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -15,6 +17,10 @@ namespace CalculatorApp
         public TitleBar()
         {
             //m_coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            //CoreApplication.GetCurrentView().TitleBar;
+            //m_coreTitleBar = Microsoft.UI.Windowing.AppWindowTitleBar.FromAbi(TitleBar);
+            m_coreTitleBar = Microsoft.UI.Windowing.AppWindow.Create();
+            //Windows.Foundation.IAsyncOperation<Windows.UI.WindowManagement.AppWindow> m_coreTitleBar = Windows.UI.WindowManagement.AppWindow.TryCreateAsync();
             m_uiSettings = new UISettings();
             m_accessibilitySettings = new AccessibilitySettings();
             InitializeComponent();
@@ -51,11 +57,13 @@ namespace CalculatorApp
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             // Register events
+            m_coreTitleBar.Changed += CoreTitleBarIsVisibleChanged;
+            m_coreTitleBar.Changed += CoreTitleBarLayoutMetricsChanged;
             //m_coreTitleBar.IsVisibleChanged += CoreTitleBarIsVisibleChanged;
             //m_coreTitleBar.LayoutMetricsChanged += CoreTitleBarLayoutMetricsChanged;
 
             m_uiSettings.ColorValuesChanged += ColorValuesChanged;
-            //m_accessibilitySettings.HighContrastChanged += OnHighContrastChanged;
+            m_accessibilitySettings.HighContrastChanged += OnHighContrastChanged;
             App.Window.Activated += OnWindowActivated;
 
             // Register RequestedTheme changed callback to update title bar system button colors.
@@ -82,7 +90,9 @@ namespace CalculatorApp
             //m_coreTitleBar.LayoutMetricsChanged -= CoreTitleBarLayoutMetricsChanged;
             //m_coreTitleBar.IsVisibleChanged -= CoreTitleBarIsVisibleChanged;
             m_uiSettings.ColorValuesChanged -= ColorValuesChanged;
-            //m_accessibilitySettings.HighContrastChanged -= OnHighContrastChanged;
+            m_accessibilitySettings.HighContrastChanged -= OnHighContrastChanged;
+            m_uiSettings.ColorValuesChanged -= ColorValuesChanged;
+            m_accessibilitySettings.HighContrastChanged -= OnHighContrastChanged;
             App.Window.Activated -= OnWindowActivated;
 
             Utils.ThemeHelper.
@@ -97,46 +107,46 @@ namespace CalculatorApp
             }
         }
 
-        private void CoreTitleBarIsVisibleChanged(CoreApplicationViewTitleBar cTitleBar, object args)
+        private void CoreTitleBarIsVisibleChanged(Microsoft.UI.Windowing.AppWindow cTitleBar, Microsoft.UI.Windowing.AppWindowChangedEventArgs args)
         {
             SetTitleBarVisibility(false);
         }
 
-        private void CoreTitleBarLayoutMetricsChanged(CoreApplicationViewTitleBar cTitleBar, object args)
+        private void CoreTitleBarLayoutMetricsChanged(Microsoft.UI.Windowing.AppWindow cTitleBar, Microsoft.UI.Windowing.AppWindowChangedEventArgs args)
         {
             SetTitleBarHeightAndPadding();
         }
 
         private void SetTitleBarVisibility(bool forceDisplay)
         {
-            //LayoutRoot.Visibility =
-            //    forceDisplay || m_coreTitleBar.IsVisible || IsAlwaysOnTopMode ? Visibility.Visible : Visibility.Collapsed;
+            LayoutRoot.Visibility =
+                forceDisplay || m_coreTitleBar.IsVisible || IsAlwaysOnTopMode ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void SetTitleBarHeightAndPadding()
         {
-            //if (m_coreTitleBar.Height == 0)
-            //{
-            //    // The titlebar isn't init
-            //    return;
-            //}
+            if (m_coreTitleBar.TitleBar.Height == 0)
+            {
+                // The titlebar isn't init
+                return;
+            }
 
-            //double leftAddition = 0;
-            //double rightAddition = 0;
+            double leftAddition = 0;
+            double rightAddition = 0;
 
-            //if (FlowDirection == FlowDirection.LeftToRight)
+            //if (flowdirection == flowdirection.lefttoright)
             //{
-            //    leftAddition = m_coreTitleBar.SystemOverlayLeftInset;
-            //    rightAddition = m_coreTitleBar.SystemOverlayRightInset;
+            //    leftaddition = m_coretitlebar.systemoverlayleftinset;
+            //    rightaddition = m_coretitlebar.systemoverlayrightinset;
             //}
             //else
             //{
-            //    leftAddition = m_coreTitleBar.SystemOverlayRightInset;
-            //    rightAddition = m_coreTitleBar.SystemOverlayLeftInset;
+            //    leftaddition = m_coretitlebar.systemoverlayrightinset;
+            //    rightaddition = m_coretitlebar.systemoverlayleftinset;
             //}
 
-            //LayoutRoot.Padding = new Thickness(leftAddition, 0, rightAddition, 0);
-            //this.Height = m_coreTitleBar.Height;
+            LayoutRoot.Padding = new Thickness(leftAddition, 0, rightAddition, 0);
+            this.Height = m_coreTitleBar.TitleBar.Height;
         }
 
         private void ColorValuesChanged(Windows.UI.ViewManagement.UISettings sender, object e)
@@ -147,40 +157,41 @@ namespace CalculatorApp
         private void SetTitleBarControlColors()
         {
             //var applicationView = ApplicationView.GetForCurrentView();
-            //if (applicationView == null)
-            //{
-            //    return;
-            //}
+            var applicationView = Microsoft.UI.Windowing.AppWindow.GetFromWindowId;
+            if (applicationView == null)
+            {
+                return;
+            }
 
-            //var applicationTitleBar = applicationView.TitleBar;
+            var applicationTitleBar = m_coreTitleBar.TitleBar;
             //if (applicationTitleBar == null)
             //{
             //    return;
             //}
 
-            //if (m_accessibilitySettings.HighContrast)
-            //{
-            //    // Reset to use default colors.
-            //    applicationTitleBar.ButtonBackgroundColor = null;
-            //    applicationTitleBar.ButtonForegroundColor = null;
-            //    applicationTitleBar.ButtonInactiveBackgroundColor = null;
-            //    applicationTitleBar.ButtonInactiveForegroundColor = null;
-            //    applicationTitleBar.ButtonHoverBackgroundColor = null;
-            //    applicationTitleBar.ButtonHoverForegroundColor = null;
-            //    applicationTitleBar.ButtonPressedBackgroundColor = null;
-            //    applicationTitleBar.ButtonPressedForegroundColor = null;
-            //}
-            //else
-            //{
-            //    applicationTitleBar.ButtonBackgroundColor = ButtonBackground?.Color;
-            //    applicationTitleBar.ButtonForegroundColor = ButtonForeground?.Color;
-            //    applicationTitleBar.ButtonInactiveBackgroundColor = ButtonInactiveBackground?.Color;
-            //    applicationTitleBar.ButtonInactiveForegroundColor = ButtonInactiveForeground?.Color;
-            //    applicationTitleBar.ButtonHoverBackgroundColor = ButtonHoverBackground?.Color;
-            //    applicationTitleBar.ButtonHoverForegroundColor = ButtonHoverForeground?.Color;
-            //    applicationTitleBar.ButtonPressedBackgroundColor = ButtonPressedBackground?.Color;
-            //    applicationTitleBar.ButtonPressedForegroundColor = ButtonPressedForeground?.Color;
-            //}
+            if (m_accessibilitySettings.HighContrast)
+            {
+                // reset to use default colors.
+                applicationTitleBar.ButtonBackgroundColor = null;
+                applicationTitleBar.ButtonForegroundColor = null;
+                applicationTitleBar.ButtonInactiveBackgroundColor = null;
+                applicationTitleBar.ButtonInactiveForegroundColor = null;
+                applicationTitleBar.ButtonHoverBackgroundColor = null;
+                applicationTitleBar.ButtonHoverForegroundColor = null;
+                applicationTitleBar.ButtonPressedBackgroundColor = null;
+                applicationTitleBar.ButtonPressedForegroundColor = null;
+            }
+            else
+            {
+                applicationTitleBar.ButtonBackgroundColor = ButtonBackground?.Color;
+                applicationTitleBar.ButtonForegroundColor = ButtonForeground?.Color;
+                applicationTitleBar.ButtonInactiveBackgroundColor = ButtonInactiveBackground?.Color;
+                applicationTitleBar.ButtonInactiveForegroundColor = ButtonInactiveForeground?.Color;
+                applicationTitleBar.ButtonHoverBackgroundColor = ButtonHoverBackground?.Color;
+                applicationTitleBar.ButtonHoverForegroundColor = ButtonHoverForeground?.Color;
+                applicationTitleBar.ButtonPressedBackgroundColor = ButtonPressedBackground?.Color;
+                applicationTitleBar.ButtonPressedForegroundColor = ButtonPressedForeground?.Color;
+            }
         }
 
         private void OnHighContrastChanged(Windows.UI.ViewManagement.AccessibilitySettings sender, object args)
@@ -289,6 +300,8 @@ namespace CalculatorApp
                 })));
 
         //private Windows.ApplicationModel.Core.CoreApplicationViewTitleBar m_coreTitleBar;
+        //private Windows.UI.WindowManagement.AppWindowTitleBar m_coreTitleBar;
+        private Microsoft.UI.Windowing.AppWindow m_coreTitleBar;
         private Windows.UI.ViewManagement.UISettings m_uiSettings;
         private Windows.UI.ViewManagement.AccessibilitySettings m_accessibilitySettings;
         private Utils.ThemeHelper.ThemeChangedCallbackToken m_rootFrameRequestedThemeCallbackToken;
