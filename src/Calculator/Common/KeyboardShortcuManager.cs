@@ -861,8 +861,8 @@ namespace CalculatorApp
             private static readonly object s_keyboardShortcutMapLockMutex = new object();
 
 
-            private static int s_keyHandlerCount;
-            private static bool s_deferredEnableShortcut;
+            private static int s_keyHandlerCount = 0;
+            private static bool s_deferredEnableShortcut = false;
         }
     }
 }

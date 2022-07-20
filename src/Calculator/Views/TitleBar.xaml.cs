@@ -20,7 +20,6 @@ namespace CalculatorApp
             //CoreApplication.GetCurrentView().TitleBar;
             //m_coreTitleBar = Microsoft.UI.Windowing.AppWindowTitleBar.FromAbi(TitleBar);
             m_coreTitleBar = Microsoft.UI.Windowing.AppWindow.Create();
-            //Windows.Foundation.IAsyncOperation<Windows.UI.WindowManagement.AppWindow> m_coreTitleBar = Windows.UI.WindowManagement.AppWindow.TryCreateAsync();
             m_uiSettings = new UISettings();
             m_accessibilitySettings = new AccessibilitySettings();
             InitializeComponent();

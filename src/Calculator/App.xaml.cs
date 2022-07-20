@@ -200,12 +200,12 @@ namespace CalculatorApp
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                if (!rootFrame.Navigate(typeof(MainPage), argument))
+                /*if (!rootFrame.Navigate(typeof(MainPage), argument))
                 {
                     // We couldn't navigate to the main page, kill the app so we have a good
                     // stack to debug
                     throw new SystemException();
-                }
+                }*/
 
                 SetMinWindowSizeAndThemeAndActivate(rootFrame, minWindowSize);
                 //m_mainViewId = ApplicationView.GetForCurrentView().Id;

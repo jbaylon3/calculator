@@ -23,7 +23,7 @@ namespace CalculatorApp
             }
 
             [Guid("619c20f2-cb3b-4521-981f-2865b1b93f04")]
-            interface ITextDocument4
+            interface ITextDocument3
             {
                 int SetMath(string value);
                 int GetMath(out string value);

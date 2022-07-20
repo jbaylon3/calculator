@@ -31,6 +31,8 @@ using namespace Microsoft::UI::Xaml;
 using namespace Microsoft::UI::Xaml::Media;
 using namespace Windows::Foundation;
 using namespace Windows::Storage;
+using namespace Microsoft::UI::Windowing;
+using namespace Microsoft::UI;
 
 void Utils::IFTPlatformException(HRESULT hr)
 {
@@ -53,6 +55,7 @@ int Utils::GetWindowId()
 {
     int windowId = -1;
 
+    //auto window = AppWindow::Create();
     auto window = CoreWindow::GetForCurrentThread();
     if (window != nullptr)
     {
