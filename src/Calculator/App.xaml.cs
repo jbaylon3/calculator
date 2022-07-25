@@ -185,6 +185,7 @@ namespace CalculatorApp
                 // Create a Frame to act as the navigation context
                 rootFrame = App.CreateFrame();
                 Window.Content = rootFrame;
+                bool nav = false;
 
                 if (rootFrame.Content == null)
                 {
@@ -192,7 +193,7 @@ namespace CalculatorApp
                     // configuring the new page by passing required information as a navigation
                     // parameter
                     // TODO Raname this MainPage type in case your app MainPage has a different name
-                    rootFrame.Navigate(typeof(MainPage), args.Arguments);
+                    nav = rootFrame.Navigate(typeof(MainPage), args.Arguments);
                 }
 
                 Window.Activate();
@@ -200,12 +201,13 @@ namespace CalculatorApp
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                /*if (!rootFrame.Navigate(typeof(MainPage), argument))
+                //if (!rootFrame.Navigate(typeof(MainPage), argument))
+                if (!nav)
                 {
                     // We couldn't navigate to the main page, kill the app so we have a good
                     // stack to debug
                     throw new SystemException();
-                }*/
+                }
 
                 SetMinWindowSizeAndThemeAndActivate(rootFrame, minWindowSize);
                 //m_mainViewId = ApplicationView.GetForCurrentView().Id;

@@ -7,6 +7,9 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Windowing;
 using Windows.UI.WindowManagement;
+using Microsoft.UI; //needed for WindowId
+using WinRT.Interop;//Needed for XAML/HWND interop.
+using System;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -14,15 +17,18 @@ namespace CalculatorApp
 {
     public sealed partial class TitleBar : UserControl
     {
+        //private Microsoft.UI.Windowing.AppWindow m_AppWindow;
         public TitleBar()
         {
             //m_coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             //CoreApplication.GetCurrentView().TitleBar;
             //m_coreTitleBar = Microsoft.UI.Windowing.AppWindowTitleBar.FromAbi(TitleBar);
-            m_coreTitleBar = Microsoft.UI.Windowing.AppWindow.Create();
+            //m_coreTitleBar = Microsoft.UI.Windowing.AppWindow.Create();
             m_uiSettings = new UISettings();
             m_accessibilitySettings = new AccessibilitySettings();
             InitializeComponent();
+
+            App.Window.Title = "WinAppSDK Calculator";
 
             //m_coreTitleBar.ExtendViewIntoTitleBar = true;
             App.Window.SetTitleBar(BackgroundElement);
