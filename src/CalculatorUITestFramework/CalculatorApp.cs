@@ -11,7 +11,7 @@ namespace CalculatorUITestFramework
     /// </summary>
     public static class CalculatorApp
     {
-        public static WindowsElement Window => session.FindElementByClassName("Windows.UI.Core.CoreWindow");
+        //public static WindowsElement Window => session.FindElementByClassName("Windows.UI.Core.CoreWindow");
 
         internal static WindowsElement Header => session.TryFindElementByAccessibilityId("Header");
 
@@ -40,7 +40,7 @@ namespace CalculatorUITestFramework
         /// </summary>
         public static void ClickOnWindow()
         {
-            Window.Click();
+            //Window.Click();
         }
 
         /// <summary>

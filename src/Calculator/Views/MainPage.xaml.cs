@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Windows.Foundation;
-using Windows.Graphics.Display;
+//using Windows.Graphics.Display;
 using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
@@ -53,7 +53,7 @@ namespace CalculatorApp
             {
                 if(sizeInInches < 7.0) // If device's display size (diagonal length) is less than 7 inches then keep the calc always in Portrait mode only
                 {
-                    DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait | DisplayOrientations.PortraitFlipped;
+                    //DisplayInformation.AutoRotationPreferences = DisplayOrientations.Portrait | DisplayOrientations.PortraitFlipped;
                 }
             }
         }
@@ -443,7 +443,7 @@ namespace CalculatorApp
             if (Model.IsAlwaysOnTop && ActualHeight < 394)
             {
                 // Sets to default always-on-top size to force re-layout
-                ApplicationView.GetForCurrentView().TryResizeView(new Size(320, 394));
+                //ApplicationView.GetForCurrentView().TryResizeView(new Size(320, 394));
             }
         }
 

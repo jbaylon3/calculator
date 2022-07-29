@@ -122,7 +122,7 @@
     <comment>{@Appx_ShortDisplayName@}{StringCategory="Feature Title"} This is the title of the official application when published through Windows Store.</comment>
   </data>
   <data name="DevAppName" xml:space="preserve">
-    <value>Calculator [Dev]</value>
+    <value></value>
     <comment>{@Appx_ShortDisplayName@}{StringCategory="Feature Title"} This is the name of the application when built by a user via GitHub. We use a different name to make it easier for users to distinguish the apps when both this version and the Store version are installed on the same device.</comment>
   </data>
   <data name="AppStoreName" xml:space="preserve">

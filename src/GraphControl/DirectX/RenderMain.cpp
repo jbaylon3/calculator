@@ -420,7 +420,7 @@ namespace GraphControl::DX
 
     void RenderMain::UnregisterEventHandlers()
     {
-        if (m_coreWindow != nullptr)
+        /*if (m_coreWindow != nullptr)
         {
             if (m_tokenVisibilityChanged.Value != 0)
             {
@@ -443,7 +443,7 @@ namespace GraphControl::DX
                 m_tokenOrientationChanged.Value = 0;
             }
             m_displayInformation = nullptr;
-        }
+        }*/
 
         if (m_tokenDisplayContentsInvalidated.Value != 0)
         {

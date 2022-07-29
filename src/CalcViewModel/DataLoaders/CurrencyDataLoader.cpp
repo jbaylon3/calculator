@@ -121,11 +121,11 @@ CurrencyDataLoader::CurrencyDataLoader(_In_ unique_ptr<ICurrencyHttpClient> clie
     }
 
     auto localizationService = LocalizationService::GetInstance();
-    if (CoreWindow::GetForCurrentThread() != nullptr)
+    /* if (CoreWindow::GetForCurrentThread() != nullptr)
     {
         // Must have a CoreWindow to access the resource context.
         m_isRtlLanguage = localizationService->IsRtlLayout();
-    }
+    }*/
 
     m_ratioFormatter = localizationService->GetRegionalSettingsAwareDecimalFormatter();
     m_ratioFormatter->IsGrouped = true;

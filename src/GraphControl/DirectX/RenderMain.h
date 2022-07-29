@@ -177,7 +177,7 @@ namespace GraphControl::DX
         Windows::Foundation::EventRegistrationToken m_tokenSizeChanged;
 
         // Cached references to event notifiers.
-        Platform::Agile<Windows::UI::Core::CoreWindow> m_coreWindow = nullptr;
+        //Platform::Agile<Windows::UI::Core::CoreWindow> m_coreWindow = nullptr;
         Windows::Foundation::EventRegistrationToken m_tokenVisibilityChanged;
 
         Windows::Graphics::Display::DisplayInformation ^ m_displayInformation = nullptr;

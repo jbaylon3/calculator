@@ -55,11 +55,11 @@ int Utils::GetWindowId()
 {
     int windowId = -1;
 
-    //auto window = AppWindow::Create();
-    auto window = CoreWindow::GetForCurrentThread();
+    auto window = AppWindow::Create();
+    //auto window = CoreWindow::GetForCurrentThread();
     if (window != nullptr)
     {
-        windowId = ApplicationView::GetApplicationViewIdForWindow(window);
+        //windowId = ApplicationView::GetApplicationViewIdForWindow(window);
     }
 
     return windowId;

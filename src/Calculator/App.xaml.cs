@@ -79,8 +79,8 @@ namespace CalculatorApp
             // It takes time to check GraphingMode at the 1st time. So, do it in a background thread
             //Task.Run(() => NavCategoryStates.IsViewModeEnabled(ViewMode.Graphing));
 
-            OnAppLaunch(args, args.Arguments);
-            //OnAppLaunch(args, null); Temporary fix, nou used anymore
+            //OnAppLaunch(args, args.Arguments);
+            OnAppLaunch(args, null); //Temporary fix, nou used anymore
         }
 
         protected void OnActivated(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
@@ -245,7 +245,7 @@ namespace CalculatorApp
                                     var frameService = WindowFrameService.CreateNewWindowFrameService(newRootFrame, true, weak);
                                     that.AddWindowToMap(frameService);
 
-                                    var dispatcher = CoreWindow.GetForCurrentThread().Dispatcher;
+                                    //var dispatcher = CoreWindow.GetForCurrentThread().Dispatcher;
 
                                     // CSHARP_MIGRATION_ANNOTATION:
                                     // class SafeFrameWindowCreation is being interpreted into a IDisposable class

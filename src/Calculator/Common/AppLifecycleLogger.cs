@@ -83,12 +83,12 @@ namespace CalculatorApp
 
         public void ResizeUIResponsive()
         {
-            ResizeUIResponsive(ApplicationView.GetForCurrentView().Id);
+            //ResizeUIResponsive(ApplicationView.GetForCurrentView().Id);
         }
 
         public void ResizeVisibleComplete()
         {
-            ResizeVisibleComplete(ApplicationView.GetForCurrentView().Id);
+            //ResizeVisibleComplete(ApplicationView.GetForCurrentView().Id);
         }
 
         public void ResizeUIResponsive(int viewId)
