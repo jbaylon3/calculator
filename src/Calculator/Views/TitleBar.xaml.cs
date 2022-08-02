@@ -23,7 +23,7 @@ namespace CalculatorApp
             //m_coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             //CoreApplication.GetCurrentView().TitleBar;
             //m_coreTitleBar = Microsoft.UI.Windowing.AppWindowTitleBar.FromAbi(TitleBar);
-            //m_coreTitleBar = Microsoft.UI.Windowing.AppWindow.Create();
+            m_coreTitleBar = Microsoft.UI.Windowing.AppWindow.Create();
             m_uiSettings = new UISettings();
             m_accessibilitySettings = new AccessibilitySettings();
             InitializeComponent();
@@ -68,7 +68,7 @@ namespace CalculatorApp
             //m_coreTitleBar.LayoutMetricsChanged += CoreTitleBarLayoutMetricsChanged;
 
             m_uiSettings.ColorValuesChanged += ColorValuesChanged;
-            m_accessibilitySettings.HighContrastChanged += OnHighContrastChanged;
+            //m_accessibilitySettings.HighContrastChanged += OnHighContrastChanged;
             App.Window.Activated += OnWindowActivated;
 
             // Register RequestedTheme changed callback to update title bar system button colors.

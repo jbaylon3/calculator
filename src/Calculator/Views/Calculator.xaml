@@ -1149,17 +1149,17 @@
                 </ControlTemplate>
             </Border.Resources>
 
-            <Pivot x:Name="DockPivot"
+            <!--<Pivot x:Name="DockPivot"
                    Margin="0,-3,0,0"
                    TabIndex="5"
                    Tapped="DockPanelTapped"
                    Template="{StaticResource DockPanelTemplate}">
                 <Pivot.Resources>
-                    <!--
+                    
                         This is a copy/paste of DefaultPivotHeaderItemStyle, but
                         1. Updated the Foreground in ViewStates.
                         2. Updated the SelectedPipe
-                    -->
+                    
                     <Style TargetType="PivotHeaderItem">
                         <Setter Property="FontSize" Value="{ThemeResource PivotHeaderItemFontSize}"/>
                         <Setter Property="FontFamily" Value="{ThemeResource PivotHeaderItemFontFamily}"/>
@@ -1346,7 +1346,7 @@
                     </PivotItem.Header>
                     <Border x:Name="DockMemoryHolder"/>
                 </PivotItem>
-            </Pivot>
+            </Pivot>-->
         </Border>
     </Grid>
 </UserControl>

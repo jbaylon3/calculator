@@ -324,13 +324,13 @@ namespace CalculatorApp
 
                     if (m_IsLastFlyoutMemory && !IsProgrammer)
                     {
-                        DockPivot.SelectedIndex = 1;
+                        //DockPivot.SelectedIndex = 1;
                     }
                 }
                 else
                 {
                     MemoryButton.Visibility = Visibility.Visible;
-                    DockMemoryHolder.Child = null;
+                    //DockMemoryHolder.Child = null;
                 }
             }
         }
@@ -345,13 +345,13 @@ namespace CalculatorApp
 
                 if (!IsProgrammer && m_IsLastFlyoutHistory)
                 {
-                    DockPivot.SelectedIndex = 0;
+                    //DockPivot.SelectedIndex = 0;
                 }
             }
             else
             {
                 // flyout view
-                DockHistoryHolder.Child = null;
+                //DockHistoryHolder.Child = null;
             }
         }
 
@@ -396,18 +396,18 @@ namespace CalculatorApp
             if (newValue)
             {
                 EnsureProgrammer();
-                m_pivotItem = (PivotItem)DockPivot.Items[0];
-                DockPivot.Items.RemoveAt(0);
+                //m_pivotItem = (PivotItem)DockPivot.Items[0];
+                //DockPivot.Items.RemoveAt(0);
             }
             else
             {
-                if (m_pivotItem != null && DockPivot.Items.Count == 1)
+                /*if (m_pivotItem != null && DockPivot.Items.Count == 1)
                 {
                     DockPivot.Items.Insert(0, m_pivotItem);
-                }
+                }*/
             }
 
-            DockPivot.SelectedIndex = 0;
+            //DockPivot.SelectedIndex = 0;
             UpdateViewState();
             UpdatePanelViewState();
         }
@@ -774,7 +774,7 @@ namespace CalculatorApp
 
         private void SetChildAsMemory()
         {
-            DockMemoryHolder.Child = GetMemory();
+            //DockMemoryHolder.Child = GetMemory();
         }
 
         private void SetChildAsHistory()
@@ -784,7 +784,7 @@ namespace CalculatorApp
                 InitializeHistoryView(Model.HistoryVM);
             }
 
-            DockHistoryHolder.Child = m_historyList;
+            //DockHistoryHolder.Child = m_historyList;
         }
 
         private Memory GetMemory()
@@ -840,11 +840,11 @@ namespace CalculatorApp
 
         private void DockPanelTapped(object sender, TappedRoutedEventArgs e)
         {
-            int index = DockPivot.SelectedIndex;
+            /*int index = DockPivot.SelectedIndex;
             if (index == 1 && !IsProgrammer)
             {
                 SetChildAsMemory();
-            }
+            }*/
 
             m_IsLastFlyoutMemory = false;
             m_IsLastFlyoutHistory = false;
@@ -852,12 +852,12 @@ namespace CalculatorApp
 
         private void OnHistoryAccessKeyInvoked(UIElement sender, AccessKeyInvokedEventArgs args)
         {
-            DockPivot.SelectedItem = HistoryPivotItem;
+            //DockPivot.SelectedItem = HistoryPivotItem;
         }
 
         private void OnMemoryAccessKeyInvoked(UIElement sender, AccessKeyInvokedEventArgs args)
         {
-            DockPivot.SelectedItem = MemoryPivotItem;
+            //DockPivot.SelectedItem = MemoryPivotItem;
         }
 
         private void OnVisualStateChanged(object sender, VisualStateChangedEventArgs e)
