@@ -295,7 +295,7 @@ public enum class GraphViewChangedReason
 
         void ScaleRange(double centerX, double centerY, double scale);
 
-        void OnCoreKeyDown(Windows::UI::Core::CoreWindow ^ sender, Windows::UI::Core::KeyEventArgs ^ e);
+        //void OnCoreKeyDown(Windows::UI::Core::CoreWindow ^ sender, Windows::UI::Core::KeyEventArgs ^ e);
         void OnCoreKeyUp(Windows::UI::Core::CoreWindow ^ sender, Windows::UI::Core::KeyEventArgs ^ e);
 
         void UpdateTracingChanged();

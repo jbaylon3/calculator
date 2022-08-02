@@ -122,11 +122,11 @@ namespace CalculatorApp
 
         private WindowFrameService(Frame frame, WeakReference parent)
         {
-            m_currentWindow = CoreWindow.GetForCurrentThread();
-            m_coreDispatcher = m_currentWindow.Dispatcher;
+            //m_currentWindow = CoreWindow.GetForCurrentThread();
+            //m_coreDispatcher = m_currentWindow.Dispatcher;
             m_frame = frame;
             m_parent = parent;
-            m_viewId = ApplicationView.GetApplicationViewIdForWindow(m_currentWindow);
+            //m_viewId = ApplicationView.GetApplicationViewIdForWindow(m_currentWindow);
         }
 
         private void InitializeFrameService(bool createdByUs)
@@ -134,11 +134,11 @@ namespace CalculatorApp
             Debug.Assert(createdByUs == (!CoreApplication.GetCurrentView().IsHosted && !CoreApplication.GetCurrentView().IsMain));
             if (createdByUs)
             {
-                ApplicationView.GetForCurrentView().Consolidated += OnConsolidated;
+                //ApplicationView.GetForCurrentView().Consolidated += OnConsolidated;
             }
             else
             {
-                CoreWindow.GetForCurrentThread().Closed += OnClosed;
+                //CoreWindow.GetForCurrentThread().Closed += OnClosed;
             }
         }
 
@@ -152,14 +152,14 @@ namespace CalculatorApp
             }
         }
 
-        private void OnClosed(CoreWindow sender, CoreWindowEventArgs args)
+        /*private void OnClosed(CoreWindow sender, CoreWindowEventArgs args)
         {
             if (m_parent.IsAlive)
             {
                 var parent = m_parent.Target as App;
                 //parent.RemoveSecondaryWindow(this);
             }
-        }
+        }*/
 
         // Returns nullptr if no service is registered with the specified id
         private object TryResolveRuntimeWindowService(Type serviceId)
@@ -175,7 +175,7 @@ namespace CalculatorApp
             }
         }
 
-        private Windows.UI.Core.CoreWindow m_currentWindow;
+        //private Windows.UI.Core.CoreWindow m_currentWindow;
         private Windows.UI.Core.CoreDispatcher m_coreDispatcher;
         private Microsoft.UI.Xaml.Controls.Frame m_frame;
         private int m_viewId;

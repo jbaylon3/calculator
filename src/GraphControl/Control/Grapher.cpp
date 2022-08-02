@@ -675,16 +675,16 @@ namespace GraphControl
 
                 if (m_cachedCursor == nullptr)
                 {
-                    m_cachedCursor = ::CoreWindow::GetForCurrentThread()->PointerCursor;
-                    ::CoreWindow::GetForCurrentThread()->PointerCursor = nullptr;
+                    /* m_cachedCursor = ::CoreWindow::GetForCurrentThread()->PointerCursor;
+                    ::CoreWindow::GetForCurrentThread()->PointerCursor = nullptr;*/
                 }
             }
             else if (m_cachedCursor != nullptr)
             {
                 m_renderMain->PointerLocation = currPosition;
 
-                ::CoreWindow::GetForCurrentThread()->PointerCursor = m_cachedCursor;
-                m_cachedCursor = nullptr;
+                /* ::CoreWindow::GetForCurrentThread()->PointerCursor = m_cachedCursor;
+                m_cachedCursor = nullptr;*/
 
                 UpdateTracingChanged();
             }
@@ -894,7 +894,7 @@ void Grapher::OnCoreKeyUp(CoreWindow ^ sender, KeyEventArgs ^ e)
     }
 }
 
-void Grapher::OnCoreKeyDown(CoreWindow ^ sender, KeyEventArgs ^ e)
+/* void Grapher::OnCoreKeyDown(CoreWindow ^ sender, KeyEventArgs ^ e)
 {
     // We don't want to react to any keys when we are not in the graph control
     GraphControl::Grapher ^ gcHasFocus = dynamic_cast<GraphControl::Grapher ^>(FocusManager::GetFocusedElement());
@@ -916,7 +916,7 @@ void Grapher::OnCoreKeyDown(CoreWindow ^ sender, KeyEventArgs ^ e)
     }
     break;
     }
-}
+}*/
 
 void Grapher::HandleKey(bool keyDown, VirtualKey key)
 {

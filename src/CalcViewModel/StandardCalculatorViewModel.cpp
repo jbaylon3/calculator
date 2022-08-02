@@ -119,11 +119,11 @@ StandardCalculatorViewModel::StandardCalculatorViewModel()
 
     m_decimalSeparator = LocalizationSettings::GetInstance()->GetDecimalSeparator();
 
-    if (CoreWindow::GetForCurrentThread() != nullptr)
+    /* if (CoreWindow::GetForCurrentThread() != nullptr)
     {
         // Must have a CoreWindow to access the resource context.
         m_isRtlLanguage = LocalizationService::GetInstance()->IsRtlLayout();
-    }
+    }*/
 
     IsEditingEnabled = false;
     IsUnaryOperatorEnabled = true;

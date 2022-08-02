@@ -76,7 +76,8 @@ namespace CalculatorApp
             The tool has generated a custom back button "UAGeneratedBackButton" in the XAML file.
             Feel free to edit its position, behavior and use the custom back button instead.
             Read: https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/case-study-1#restoring-back-button-functionality
-            */SystemNavigationManager.GetForCurrentView().BackRequested += System_BackRequested;
+            */
+            SystemNavigationManager.GetForCurrentView().BackRequested += System_BackRequested;
 
             AnnouncePageOpened();
 
